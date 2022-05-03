@@ -91,7 +91,6 @@ export default function WritingExercise() {
                   fontWeight: "bold",
                 }}
                 inputRef={input}
-                inputRef={input}
               />
             </Box>
           </Box>
