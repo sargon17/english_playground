@@ -12,9 +12,9 @@ export default function Header() {
         backgroundColor: "grey.dark_hover",
       }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="xxl">
         <Typography variant="title" color={"grey.normal"}>
-          Hello World
+          English Playground
         </Typography>
       </Container>
     </Paper>

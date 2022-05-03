@@ -22,6 +22,13 @@ const classicTheme = createTheme({
       fontSize: "4.236rem",
       fontWeight: 700,
     },
+    title2: {
+      fontSize: "2.618rem",
+      fontWeight: 700,
+    },
+  },
+  shape: {
+    border_radius: "11px",
   },
 });
 

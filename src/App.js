@@ -3,6 +3,7 @@ import { ThemeProvider } from "@mui/material";
 import classicTheme from "./Themes/ClassicTheme";
 
 import Header from "./components/Header";
+import Main from "./components/Main";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           }}
         >
           <Header />
+          <Main />
         </Paper>
       </ThemeProvider>
     </div>
