@@ -37,9 +37,6 @@ const classicTheme = createTheme({
       fontWeight: 700,
     },
   },
-  shape: {
-    border_radius: "11px",
-  },
 });
 
 export default classicTheme;
