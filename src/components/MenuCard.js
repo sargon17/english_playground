@@ -14,6 +14,11 @@ export default function MenuCard() {
           height: "100%",
           backgroundColor: "grey.dark",
           borderRadius: "border_radius",
+          transition: "all 250ms ease-in-out",
+          cursor: "pointer",
+          "&:hover": {
+            backgroundColor: "grey.dark_darker",
+          },
         }}
       >
         <Box
@@ -21,11 +26,14 @@ export default function MenuCard() {
           width={"100%"}
           sx={{
             width: "100%",
-            minHeight: "206px",
+            minHeight: "130px",
             // backgroundColor: "grey.dark",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            "@media (min-width: 600px)": {
+              minHeight: "206px",
+            },
           }}
         >
           <Box
