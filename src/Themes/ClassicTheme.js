@@ -1,0 +1,28 @@
+import { createTheme } from "@mui/material";
+
+const classicTheme = createTheme({
+  palette: {
+    grey: {
+      lighter: "#ABABAB",
+      light_hover: "#9B9B9B",
+      light_active: "#868686",
+      normal: "#454545",
+      normal_hover: "#3B3B3B",
+      normal_active: "#323232",
+      dark: "#181818",
+      dark_hover: "#111111",
+      dark_active: "#080808",
+    },
+  },
+  typography: {
+    fontFamily: "Roboto",
+    fontSize: 14,
+    fontWeight: 400,
+    title: {
+      fontSize: "4.236rem",
+      fontWeight: 700,
+    },
+  },
+});
+
+export default classicTheme;
