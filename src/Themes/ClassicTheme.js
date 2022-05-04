@@ -36,6 +36,14 @@ const classicTheme = createTheme({
       },
       fontWeight: 700,
     },
+    points: {
+      fontSize: "10.618rem",
+      fontWeight: 800,
+      color: "grey.light_hover",
+      "@media (min-width:600px)": {
+        fontSize: "20rem",
+      },
+    },
   },
 });
 

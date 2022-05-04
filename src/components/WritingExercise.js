@@ -65,6 +65,31 @@ export default function WritingExercise() {
         >
           <Box
             sx={{
+              position: "absolute",
+              top: "0%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: "1",
+              height: "100%",
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+            }}
+          >
+            <Typography
+              variant="points"
+              sx={{
+                color: "grey.normal_active",
+              }}
+            >
+              {correctAnswersNumber + "/" + totalRepeats}
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              zIndex: "2",
               width: "100%",
               height: "100%",
               textAlign: "center",
