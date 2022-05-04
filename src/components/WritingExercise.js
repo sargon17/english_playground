@@ -21,12 +21,11 @@ export default function WritingExercise() {
       addPoints(true);
       //   word = "";
       console.log(correctAnswersNumber);
-      cleanInput();
     } else {
       addPoints(false);
       setIsWordCorrect(false);
-      cleanInput();
     }
+    cleanInput();
   }
 
   function addPoints(isCorrect) {
@@ -38,6 +37,7 @@ export default function WritingExercise() {
   }
 
   function cleanInput() {
+    console.log(input.current.value);
     input.current.value = "";
   }
 
@@ -105,8 +105,11 @@ export default function WritingExercise() {
                   fontSize: "1.2rem",
                   fontWeight: "bold",
                 }}
-                inputRef={input}
-                ref={input}
+                // inputRef={input}
+                // ref={input}
+                inputRef={(ref) => {
+                  input.current = ref;
+                }}
               />
             </Box>
           </Box>
