@@ -28,8 +28,14 @@ export default function WritingExercise() {
 
   function checkCorrectsTimes() {
     if (correctAnswersNumber >= totalRepeats) {
-      alert("You have finished the exercise");
+      endGame();
     }
+  }
+
+  function endGame() {
+    setResultArray([]);
+    setCorrectAnswersNumber(0);
+    setTotalRepeats(20);
   }
 
   function addPoints(isCorrect) {
