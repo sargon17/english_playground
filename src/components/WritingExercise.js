@@ -9,23 +9,27 @@ import xCircle from "./../assets/x-circle-fill.svg";
 export default function WritingExercise() {
   let wordToWrite = "advertisement";
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
-  let [isWordCorrect, setIsWordCorrect] = useState(false);
   let [resultArray, setResultArray] = useState([]);
+  let [totalRepeats, setTotalRepeats] = useState(20);
   let input = useRef(null);
 
   function checkWord(word) {
     word = word.toLowerCase().trim();
     if (word === wordToWrite) {
-      setIsWordCorrect(true);
       setCorrectAnswersNumber(correctAnswersNumber + 1);
       addPoints(true);
-      //   word = "";
-      console.log(correctAnswersNumber);
+      checkCorrectsTimes();
     } else {
       addPoints(false);
-      setIsWordCorrect(false);
+      setTotalRepeats(totalRepeats + 2);
     }
     cleanInput();
+  }
+
+  function checkCorrectsTimes() {
+    if (correctAnswersNumber >= totalRepeats) {
+      alert("You have finished the exercise");
+    }
   }
 
   function addPoints(isCorrect) {
