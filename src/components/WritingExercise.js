@@ -3,11 +3,14 @@ import { Box } from "@mui/system";
 import { capitalize, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { Input } from "@mui/material";
+import check from "./../assets/check-circle-fill.svg";
+import xCircle from "./../assets/x-circle-fill.svg";
 
 export default function WritingExercise() {
   let wordToWrite = "advertisement";
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
   let [isWordCorrect, setIsWordCorrect] = useState(false);
+  let [resultArray, setResultArray] = useState([]);
   let input = useRef(null);
 
   function checkWord(word) {
@@ -15,17 +18,25 @@ export default function WritingExercise() {
     if (word === wordToWrite) {
       setIsWordCorrect(true);
       setCorrectAnswersNumber(correctAnswersNumber + 1);
+      addPoints(true);
       //   word = "";
       console.log(correctAnswersNumber);
       cleanInput();
     } else {
+      addPoints(false);
       setIsWordCorrect(false);
+      cleanInput();
     }
   }
 
-  //   if (isWordCorrect) {
-  //     cleanInput();
-  //   }
+  function addPoints(isCorrect) {
+    if (isCorrect) {
+      setResultArray([...resultArray, check]);
+    } else {
+      setResultArray([...resultArray, xCircle]);
+    }
+  }
+
   function cleanInput() {
     input.current.value = "";
   }
@@ -64,7 +75,9 @@ export default function WritingExercise() {
             </Typography>
             <Box>
               <Typography variant="title2" color={"grey.normal"}>
-                {isWordCorrect ? "Correct!" : "Incorrect!"}
+                {resultArray.map((item, index) => {
+                  return <img key={index} src={item} alt="check" />;
+                })}
               </Typography>
             </Box>
             <Box
@@ -78,9 +91,6 @@ export default function WritingExercise() {
                 placeholder="Write the word here"
                 variant="outlined"
                 disableUnderline
-                // onChange={(e) => {
-                //   checkWord(e.target.value);
-                // }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     checkWord(e.target.value);
@@ -96,6 +106,7 @@ export default function WritingExercise() {
                   fontWeight: "bold",
                 }}
                 inputRef={input}
+                ref={input}
               />
             </Box>
           </Box>
