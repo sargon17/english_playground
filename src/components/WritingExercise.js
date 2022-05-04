@@ -78,8 +78,13 @@ export default function WritingExercise() {
                 placeholder="Write the word here"
                 variant="outlined"
                 disableUnderline
-                onChange={(e) => {
-                  checkWord(e.target.value);
+                // onChange={(e) => {
+                //   checkWord(e.target.value);
+                // }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    checkWord(e.target.value);
+                  }
                 }}
                 sx={{
                   backgroundColor: "grey.dark_hover",
