@@ -73,12 +73,21 @@ export default function WritingExercise() {
             >
               {capitalize(wordToWrite)}
             </Typography>
-            <Box>
-              <Typography variant="title2" color={"grey.normal"}>
-                {resultArray.map((item, index) => {
-                  return <img key={index} src={item} alt="check" />;
-                })}
-              </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                margin: "auto",
+                marginTop: "20px",
+                gap: "10px",
+                flexWrap: "wrap",
+                maxWidth: "600px",
+              }}
+            >
+              {resultArray.map((item, index) => {
+                return <img key={index} src={item} alt="check" />;
+              })}
             </Box>
             <Box
               sx={{
@@ -105,8 +114,6 @@ export default function WritingExercise() {
                   fontSize: "1.2rem",
                   fontWeight: "bold",
                 }}
-                // inputRef={input}
-                // ref={input}
                 inputRef={(ref) => {
                   input.current = ref;
                 }}
