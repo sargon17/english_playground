@@ -5,17 +5,45 @@ import Typography from "@mui/material/Typography";
 import { Input } from "@mui/material";
 import check from "./../assets/check-circle-fill.svg";
 import xCircle from "./../assets/x-circle-fill.svg";
+import wordsData from "./../data/writingEx_data.json";
 
 export default function WritingExercise() {
-  let wordToWrite = "advertisement";
+  // let wordToWrite = wordsData[Math.floor(Math.random() * wordsData.length)];
+  let wrotenWords = [];
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
   let [resultArray, setResultArray] = useState([]);
   let [totalRepeats, setTotalRepeats] = useState(20);
+  let [currentWord, setCurrentWord] = useState(
+    wordsData[Math.floor(Math.random() * wordsData.length)]
+  );
   let input = useRef(null);
+  console.log(currentWord);
+
+  // selectTheWord();
+  function selectTheWord() {
+    let randomNumber = Math.floor(Math.random() * wordsData.length);
+    console.log(randomNumber);
+    setCurrentWord((prevWord) => wordsData[randomNumber]);
+    // setCurrentWord(wordsData[randomNumber]);
+    // console.log(wordsData[randomNumber]);
+    // if (
+    //   wrotenWords.includes(wordsData[randomNumber]) &&
+    //   wrotenWords.length < wordsData.length
+    // ) {
+    //   selectTheWord();
+    //   // selectTheWord();
+    // } else if (wrotenWords.length === wordsData.length) {
+    //   wrotenWords = [];
+    // } else {
+    //   wrotenWords.push(currentWord);
+    //   // console.log(wrotenWords);
+    // }
+    // setCurrentWord(wordsData[randomNumber]);
+  }
 
   function checkWord(word) {
     word = word.toLowerCase().trim();
-    if (word === wordToWrite) {
+    if (word === currentWord) {
       setCorrectAnswersNumber(correctAnswersNumber + 1);
       addPoints(true);
       checkCorrectsTimes();
@@ -27,7 +55,9 @@ export default function WritingExercise() {
   }
 
   function checkCorrectsTimes() {
-    if (correctAnswersNumber >= totalRepeats) {
+    if (correctAnswersNumber + 1 >= totalRepeats) {
+      console.log("correctAnswersNumber", correctAnswersNumber);
+      console.log("totalRepeats", totalRepeats);
       endGame();
     }
   }
@@ -36,6 +66,7 @@ export default function WritingExercise() {
     setResultArray([]);
     setCorrectAnswersNumber(0);
     setTotalRepeats(20);
+    selectTheWord();
   }
 
   function addPoints(isCorrect) {
@@ -101,33 +132,40 @@ export default function WritingExercise() {
               textAlign: "center",
             }}
           >
-            <Typography
-              variant="title"
-              color={"grey.lighter"}
-              textAlign={"center"}
-            >
-              {capitalize(wordToWrite)}
-            </Typography>
             <Box
               sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                margin: "auto",
-                marginTop: "20px",
-                gap: "10px",
-                flexWrap: "wrap",
-                maxWidth: "600px",
+                margin: "50px 0",
               }}
             >
-              {resultArray.map((item, index) => {
-                return <img key={index} src={item} alt="check" />;
-              })}
+              <Typography
+                variant="title"
+                color={"grey.lighter"}
+                textAlign={"center"}
+              >
+                {capitalize(currentWord)}
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "auto",
+                  marginTop: "20px",
+                  gap: "10px",
+                  flexWrap: "wrap",
+                  maxWidth: "600px",
+                  minHeight: "24px",
+                }}
+              >
+                {resultArray.map((item, index) => {
+                  return <img key={index} src={item} alt="check" />;
+                })}
+              </Box>
             </Box>
             <Box
               sx={{
                 width: "60%",
-                margin: "20px auto",
+                margin: "100px auto",
               }}
             >
               <Input
@@ -148,6 +186,7 @@ export default function WritingExercise() {
                   padding: "12px",
                   fontSize: "1.2rem",
                   fontWeight: "bold",
+                  opacity: "0.8",
                 }}
                 inputRef={(ref) => {
                   input.current = ref;
