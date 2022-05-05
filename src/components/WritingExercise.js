@@ -7,7 +7,7 @@ import check from "./../assets/check-circle-fill.svg";
 import xCircle from "./../assets/x-circle-fill.svg";
 import wordsData from "./../data/writingEx_data.json";
 
-export default function WritingExercise() {
+export default function WritingExercise({ close }) {
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
   let [resultArray, setResultArray] = useState([]);
   let [totalRepeats, setTotalRepeats] = useState(20);
@@ -89,6 +89,26 @@ export default function WritingExercise() {
             transform: "translateX(-50%)",
           }}
         >
+          <Box
+            onClick={() => close()}
+            sx={{
+              position: "absolute",
+              top: "0%",
+              right: "0%",
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              zIndex: "10",
+              overflow: "hidden",
+            }}
+          >
+            <Typography variant="title2" color="grey.light_active">
+              close
+            </Typography>
+          </Box>
           <Box
             sx={{
               position: "absolute",

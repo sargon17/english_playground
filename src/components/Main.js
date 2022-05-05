@@ -19,10 +19,19 @@ export default function Main() {
     setGames(
       games.map((item) => {
         if (item.id === game.id) {
-          item.isActive = true;
+          item.isActive = !item.isActive;
         } else {
           item.isActive = false;
         }
+        return item;
+      })
+    );
+  }
+  function closeAllGames() {
+    console.log("closeAllGames");
+    setGames(
+      games.map((item) => {
+        item.isActive = false;
         return item;
       })
     );
@@ -49,7 +58,7 @@ export default function Main() {
     return games.map((game, index) => {
       return (
         games[index].isActive && (
-          <game.component key={game.id} isActive={game.isActive} />
+          <game.component key={game.id} close={closeAllGames} />
         )
       );
     });
