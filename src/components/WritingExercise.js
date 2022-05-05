@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Box } from "@mui/system";
-import { capitalize, Paper } from "@mui/material";
+import { Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { Input } from "@mui/material";
 import check from "./../assets/check-circle-fill.svg";
@@ -9,38 +9,27 @@ import wordsData from "./../data/writingEx_data.json";
 
 export default function WritingExercise() {
   // let wordToWrite = wordsData[Math.floor(Math.random() * wordsData.length)];
-  let wrotenWords = [];
+  // let wrotenWords = [];
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
   let [resultArray, setResultArray] = useState([]);
   let [totalRepeats, setTotalRepeats] = useState(20);
-  let [currentWord, setCurrentWord] = useState("");
+  let words = wordsData;
+  let theWord = setTheWord();
+  let [currentWord, setCurrentWord] = useState(theWord);
   let input = useRef(null);
-  console.log(currentWord);
 
-  if (currentWord === "") {
-    // setCurrentWord(wordsData[Math.floor(Math.random() * wordsData.length)]);
-    selectTheWord();
-  }
-  // selectTheWord();
   function selectTheWord() {
-    let randomNumber = Math.floor(Math.random() * wordsData.length);
-    console.log(randomNumber);
-    setCurrentWord((prevWord) => wordsData[randomNumber]);
-    // setCurrentWord(wordsData[randomNumber]);
-    // console.log(wordsData[randomNumber]);
-    // if (
-    //   wrotenWords.includes(wordsData[randomNumber]) &&
-    //   wrotenWords.length < wordsData.length
-    // ) {
-    //   selectTheWord();
-    //   // selectTheWord();
-    // } else if (wrotenWords.length === wordsData.length) {
-    //   wrotenWords = [];
-    // } else {
-    //   wrotenWords.push(currentWord);
-    //   // console.log(wrotenWords);
-    // }
-    // setCurrentWord(wordsData[randomNumber]);
+    // console.log("word =>", currentWord);
+    // console.log("words before =>", words);
+    words.splice(words.indexOf(currentWord), 1);
+    // console.log("words after =>", words);
+    let randomNumber = Math.floor(Math.random() * words.length);
+    setCurrentWord(() => words[randomNumber]);
+  }
+
+  function setTheWord() {
+    let randomNumber = Math.floor(Math.random() * words.length);
+    return words[randomNumber];
   }
 
   function checkWord(word) {
@@ -58,8 +47,8 @@ export default function WritingExercise() {
 
   function checkCorrectsTimes() {
     if (correctAnswersNumber + 1 >= totalRepeats) {
-      console.log("correctAnswersNumber", correctAnswersNumber);
-      console.log("totalRepeats", totalRepeats);
+      // console.log("correctAnswersNumber", correctAnswersNumber);
+      // console.log("totalRepeats", totalRepeats);
       endGame();
     }
   }
@@ -80,7 +69,7 @@ export default function WritingExercise() {
   }
 
   function cleanInput() {
-    console.log(input.current.value);
+    // console.log(input.current.value);
     input.current.value = "";
   }
 
@@ -144,7 +133,8 @@ export default function WritingExercise() {
                 color={"grey.lighter"}
                 textAlign={"center"}
               >
-                {capitalize(currentWord)}
+                {/* {theWord ? theWord : selectTheWord()} */}
+                {currentWord ? currentWord : "manca il testo"}
               </Typography>
               <Box
                 sx={{
