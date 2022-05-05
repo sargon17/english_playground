@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Box } from "@mui/system";
 import { capitalize, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
@@ -8,8 +8,6 @@ import xCircle from "./../assets/x-circle-fill.svg";
 import wordsData from "./../data/writingEx_data.json";
 
 export default function WritingExercise() {
-  // let wordToWrite = wordsData[Math.floor(Math.random() * wordsData.length)];
-  // let wrotenWords = [];
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
   let [resultArray, setResultArray] = useState([]);
   let [totalRepeats, setTotalRepeats] = useState(20);
