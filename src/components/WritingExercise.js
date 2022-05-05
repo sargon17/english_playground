@@ -6,6 +6,8 @@ import { Input } from "@mui/material";
 import check from "./../assets/check-circle-fill.svg";
 import xCircle from "./../assets/x-circle-fill.svg";
 import wordsData from "./../data/writingEx_data.json";
+import { IconButton } from "@mui/material";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 export default function WritingExercise({ close }) {
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
@@ -90,7 +92,6 @@ export default function WritingExercise({ close }) {
           }}
         >
           <Box
-            onClick={() => close()}
             sx={{
               position: "absolute",
               top: "0%",
@@ -100,14 +101,26 @@ export default function WritingExercise({ close }) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              cursor: "pointer",
+              // cursor: "pointer",
               zIndex: "10",
               overflow: "hidden",
             }}
           >
-            <Typography variant="title2" color="grey.light_active">
-              close
-            </Typography>
+            <IconButton
+              onClick={() => close()}
+              sx={{
+                color: "grey.lighter",
+                "&:hover": {
+                  backgroundColor: "grey.normal_active",
+                },
+              }}
+            >
+              <CloseRoundedIcon
+                sx={{
+                  color: "grey.light_active",
+                }}
+              />
+            </IconButton>
           </Box>
           <Box
             sx={{
