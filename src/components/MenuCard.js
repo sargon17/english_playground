@@ -4,9 +4,9 @@ import { Paper } from "@mui/material";
 import { Box } from "@mui/system";
 import Typography from "@mui/material/Typography";
 
-export default function MenuCard() {
+export default function MenuCard({ name }) {
   return (
-    <div>
+    <>
       <Paper
         elevation={4}
         sx={{
@@ -52,11 +52,11 @@ export default function MenuCard() {
               color={"grey.light_active"}
               textAlign={"center"}
             >
-              Writing Exercise
+              {name}
             </Typography>
           </Box>
         </Box>
       </Paper>
-    </div>
+    </>
   );
 }

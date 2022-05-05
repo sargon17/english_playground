@@ -1,10 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import MenuCard from "./MenuCard";
 import { Container } from "@mui/material";
 import WritingExercise from "./WritingExercise";
 
 export default function Main() {
+  let [games, setGames] = useState([
+    {
+      name: "Writing Exercise",
+      description: "Write the word",
+      id: "writing-exercise",
+      component: WritingExercise,
+      isActive: false,
+    },
+  ]);
+
+  function handleClick(game) {
+    setGames(
+      games.map((item) => {
+        if (item.id === game.id) {
+          item.isActive = true;
+        } else {
+          item.isActive = false;
+        }
+        return item;
+      })
+    );
+  }
+
+  function displayGames() {
+    return games.map((game, index) => {
+      return (
+        <Grid
+          item
+          xs={12}
+          md={6}
+          lg={3}
+          key={game.id}
+          onClick={() => handleClick(game)}
+        >
+          <MenuCard name={game.name} />
+        </Grid>
+      );
+    });
+  }
+
+  function displayGameWindows() {
+    return games.map((game, index) => {
+      return (
+        games[index].isActive && (
+          <game.component key={game.id} isActive={game.isActive} />
+        )
+      );
+    });
+  }
+
   return (
     <div>
       <Container
@@ -17,14 +67,9 @@ export default function Main() {
         }}
       >
         <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={3}>
-            <MenuCard />
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MenuCard />
-          </Grid>
+          {displayGames()}
         </Grid>
-        <WritingExercise />
+        {displayGameWindows()}
       </Container>
     </div>
   );
