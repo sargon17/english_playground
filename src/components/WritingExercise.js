@@ -13,12 +13,14 @@ export default function WritingExercise() {
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
   let [resultArray, setResultArray] = useState([]);
   let [totalRepeats, setTotalRepeats] = useState(20);
-  let [currentWord, setCurrentWord] = useState(
-    wordsData[Math.floor(Math.random() * wordsData.length)]
-  );
+  let [currentWord, setCurrentWord] = useState("");
   let input = useRef(null);
   console.log(currentWord);
 
+  if (currentWord === "") {
+    // setCurrentWord(wordsData[Math.floor(Math.random() * wordsData.length)]);
+    selectTheWord();
+  }
   // selectTheWord();
   function selectTheWord() {
     let randomNumber = Math.floor(Math.random() * wordsData.length);
