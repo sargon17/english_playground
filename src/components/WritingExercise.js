@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Box } from "@mui/system";
-import { Paper } from "@mui/material";
+import { capitalize, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { Input } from "@mui/material";
 import check from "./../assets/check-circle-fill.svg";
@@ -134,7 +134,7 @@ export default function WritingExercise() {
                 textAlign={"center"}
               >
                 {/* {theWord ? theWord : selectTheWord()} */}
-                {currentWord ? currentWord : "manca il testo"}
+                {capitalize(currentWord ? currentWord : "end")}
               </Typography>
               <Box
                 sx={{
