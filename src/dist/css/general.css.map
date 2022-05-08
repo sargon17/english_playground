@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,CAAC,CAAC;EACA,UAAU,EAAE,UAAU;EACtB,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EACV,WAAW,EAAE,uBAAuB;CACrC",
+    "sources": [
+        "../../scss/general.scss",
+        "../../scss/variables.scss",
+        "../../scss/components/blops.scss"
+    ],
+    "names": [],
+    "file": "general.css"
+}

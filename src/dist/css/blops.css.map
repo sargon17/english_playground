@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../scss/components/blops.scss"
+    ],
+    "names": [],
+    "file": "blops.css"
+}
