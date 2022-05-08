@@ -4,6 +4,7 @@ import classicTheme from "./Themes/ClassicTheme";
 
 import Header from "./components/Header";
 import Main from "./components/Main";
+import Blops from "./components/Blops";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         >
           <Header />
           <Main />
+          <Blops />
         </Paper>
       </ThemeProvider>
     </div>
