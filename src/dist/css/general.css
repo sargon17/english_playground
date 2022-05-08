@@ -1,8 +1,27 @@
+.blops__container {
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  z-index: 0;
+}
+
+.blops__container .blop__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: "Open Sans", sans-serif;
+}
+
+.App {
+  overflow: hidden;
 }
 /*# sourceMappingURL=general.css.map */
