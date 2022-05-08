@@ -3,7 +3,6 @@ import React from "react";
 import { Paper } from "@mui/material";
 import { Box } from "@mui/system";
 import Typography from "@mui/material/Typography";
-
 export default function MenuCard({ name }) {
   return (
     <>

@@ -8,8 +8,9 @@ import xCircle from "./../assets/x-circle-fill.svg";
 import wordsData from "./../data/writingEx_data.json";
 import { IconButton } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import Blops from "./Blops";
 
-export default function WritingExercise({ close }) {
+export default function WritingExercise({ close, mousePosition }) {
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
   let [resultArray, setResultArray] = useState([]);
   let [totalRepeats, setTotalRepeats] = useState(20);
@@ -89,6 +90,8 @@ export default function WritingExercise({ close }) {
             top: "0%",
             left: "50%",
             transform: "translateX(-50%)",
+            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.25)",
+            overflow: "hidden",
           }}
         >
           <Box
@@ -122,6 +125,7 @@ export default function WritingExercise({ close }) {
               />
             </IconButton>
           </Box>
+          <Blops mouse={mousePosition} />
           <Box
             sx={{
               position: "absolute",

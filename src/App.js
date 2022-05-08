@@ -39,7 +39,7 @@ function App() {
           }}
         >
           <Header />
-          <Main />
+          <Main mousePosition={mouse} />
         </Paper>
       </ThemeProvider>
     </div>

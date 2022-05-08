@@ -4,7 +4,7 @@ import MenuCard from "./MenuCard";
 import { Container } from "@mui/material";
 import WritingExercise from "./WritingExercise";
 
-export default function Main() {
+export default function Main({ mousePosition }) {
   let [games, setGames] = useState([
     {
       name: "Writing Exercise",
@@ -58,7 +58,11 @@ export default function Main() {
     return games.map((game, index) => {
       return (
         games[index].isActive && (
-          <game.component key={game.id} close={closeAllGames} />
+          <game.component
+            key={game.id}
+            close={closeAllGames}
+            mousePosition={mousePosition}
+          />
         )
       );
     });
