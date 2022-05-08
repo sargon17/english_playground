@@ -9,6 +9,7 @@ import Blops from "./components/Blops";
 function App() {
   return (
     <div className="App">
+      <Blops />
       <ThemeProvider theme={classicTheme}>
         <Paper
           elevation={0}
@@ -18,11 +19,11 @@ function App() {
             backgroundColor: "grey.dark_hover",
             borderRadius: "0",
             margin: "0",
+            zIndex: "2",
           }}
         >
           <Header />
           <Main />
-          <Blops />
         </Paper>
       </ThemeProvider>
     </div>

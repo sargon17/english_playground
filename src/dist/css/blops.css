@@ -1,1 +1,15 @@
-/* No CSS *//*# sourceMappingURL=blops.css.map */
+.blops__container {
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  z-index: 0;
+}
+
+.blops__container .blop__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+/*# sourceMappingURL=blops.css.map */

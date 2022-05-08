@@ -10,10 +10,18 @@ export default function Header() {
       sx={{
         width: "100%",
         backgroundColor: "grey.dark_hover",
+        zIndex: "2",
       }}
     >
       <Container maxWidth="xxl">
-        <Typography variant="title" color={"grey.normal"}>
+        <Typography
+          variant="title"
+          color={"grey.normal"}
+          sx={{
+            position: "relative",
+            zIndex: "2",
+          }}
+        >
           English Playground
         </Typography>
       </Container>
