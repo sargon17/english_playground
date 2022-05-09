@@ -11,6 +11,10 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Blops from "./Blops";
 import ProgressCounter from "./ProgressCounter/ProgressCounter";
 
+import blopRedLg from "./../assets/red-blops/blop-red-lg.svg";
+import blopRedMd from "./../assets/red-blops/blop-red-md.svg";
+import blopRedSm from "./../assets/red-blops/blop-red-sm.svg";
+
 export default function WritingExercise({ close, mousePosition }) {
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
   let [resultArray, setResultArray] = useState([]);
@@ -126,7 +130,10 @@ export default function WritingExercise({ close, mousePosition }) {
               />
             </IconButton>
           </Box>
-          <Blops mouse={mousePosition} />
+          <Blops
+            blops={[blopRedLg, blopRedMd, blopRedSm]}
+            position={{ top: "100%", left: "100%" }}
+          />
           <Box
             sx={{
               position: "absolute",

@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import react from "react";
 import { Paper } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import classicTheme from "./Themes/ClassicTheme";
@@ -8,24 +8,17 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Blops from "./components/Blops";
 
+import blopGreenLg from "./assets/green-blops/blop-green-lg.svg";
+import blopGreenMd from "./assets/green-blops/blop-green-md.svg";
+import blopGreenSm from "./assets/green-blops/blop-green-sm.svg";
+
 function App() {
-  let [mouse, setMouse] = useState({
-    x: 0,
-    y: 0,
-  });
-
-  function getMousePosition(e) {
-    // console.log(e.clientX, e.clientY);
-    setMouse({
-      x: e.clientX,
-      y: e.clientY,
-    });
-    // console.log(mouse.x / window.innerWidth, mouse.y / window.innerHeight);
-  }
-
   return (
-    <div className="App" onMouseMove={(e) => getMousePosition(e)}>
-      <Blops mouse={mouse} />
+    <div className="App">
+      <Blops
+        blops={[blopGreenLg, blopGreenMd, blopGreenSm]}
+        position={{ top: "15%", left: "15%" }}
+      />
       <ThemeProvider theme={classicTheme}>
         <Paper
           elevation={0}
@@ -39,7 +32,7 @@ function App() {
           }}
         >
           <Header />
-          <Main mousePosition={mouse} />
+          <Main />
         </Paper>
       </ThemeProvider>
     </div>
