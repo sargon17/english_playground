@@ -5,12 +5,7 @@ import react from "react";
 import "../dist/css/blops.css";
 
 export default function Blops({ blops, position }) {
-  //get blops
-  // let directions = position.val.split(",");
-  let blopsStyles = {
-    position: "absolute",
-    ...position,
-  };
+  // Debugging purposes
   if (!position) {
     console.log("no position");
     return null;
@@ -19,7 +14,12 @@ export default function Blops({ blops, position }) {
     return null;
   }
 
-  console.log("blopsStyles =>", blopsStyles);
+  let blopsStyles = {
+    position: "absolute",
+    ...position,
+  };
+
+  // console.log("blopsStyles =>", blopsStyles);
   const blopsArray = blops.map((blop, index) => {
     return (
       <div key={index} className="blop__container" style={blopsStyles}>

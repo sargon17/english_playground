@@ -31,7 +31,7 @@ function App() {
             zIndex: "2",
           }}
         >
-          <Header />
+          {/* <Header /> */}
           <Main />
         </Paper>
       </ThemeProvider>

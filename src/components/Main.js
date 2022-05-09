@@ -3,6 +3,8 @@ import Grid from "@mui/material/Grid";
 import MenuCard from "./MenuCard";
 import { Container } from "@mui/material";
 import WritingExercise from "./WritingExercise";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 
 export default function Main({ mousePosition }) {
   let [games, setGames] = useState([
@@ -70,6 +72,27 @@ export default function Main({ mousePosition }) {
 
   return (
     <div>
+      <Paper
+        elevation={0}
+        sx={{
+          width: "100%",
+          backgroundColor: "grey.dark_hover",
+          zIndex: "2",
+        }}
+      >
+        <Container maxWidth="xxl">
+          <Typography
+            variant="title"
+            color={"grey.normal"}
+            sx={{
+              position: "relative",
+              zIndex: "2",
+            }}
+          >
+            English Playground
+          </Typography>
+        </Container>
+      </Paper>
       <Container
         maxWidth="xxl"
         sx={{
