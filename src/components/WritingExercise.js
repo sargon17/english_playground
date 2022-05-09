@@ -9,6 +9,7 @@ import wordsData from "./../data/writingEx_data.json";
 import { IconButton } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Blops from "./Blops";
+import ProgressCounter from "./ProgressCounter/ProgressCounter";
 
 export default function WritingExercise({ close, mousePosition }) {
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
@@ -147,7 +148,11 @@ export default function WritingExercise({ close, mousePosition }) {
                 color: "grey.normal_active",
               }}
             >
-              {correctAnswersNumber + "/" + totalRepeats}
+              <ProgressCounter
+                progress={correctAnswersNumber}
+                maxprogress={totalRepeats}
+              />
+              {/* {correctAnswersNumber + "/" + totalRepeats} */}
             </Typography>
           </Box>
           <Box
