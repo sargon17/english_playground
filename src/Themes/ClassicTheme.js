@@ -20,12 +20,13 @@ const classicTheme = createTheme({
     fontSize: 14,
     fontWeight: 400,
     title: {
+      lineHeight: 1,
       fontSize: "1.618rem",
       "@media (min-width: 300px)": {
         fontSize: "2.618rem",
       },
       "@media (min-width:600px)": {
-        fontSize: "4.236rem",
+        fontSize: "3.236rem",
       },
       fontWeight: 700,
     },

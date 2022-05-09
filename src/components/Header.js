@@ -16,14 +16,26 @@ export default function Header({ isAnyGameActive, activeGame }) {
         zIndex: "2",
       }}
     >
-      <Container maxWidth="xxl">
+      <Container
+        maxWidth="xxl"
+        sx={{
+          height: "10vh",
+          maxHeight: "10vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          // display: "flex",
+        }}
+      >
         {isAnyGameActive && (
           <Typography
-            variant="h4"
+            variant="h5"
             color={"grey.lighter"}
             sx={{
               position: "relative",
               zIndex: "2",
+              margin: "0",
+              padding: "0",
             }}
           >
             English Playground
