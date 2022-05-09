@@ -37,11 +37,11 @@ const classicTheme = createTheme({
       fontWeight: 700,
     },
     points: {
-      fontSize: "10.618rem",
-      fontWeight: 800,
-      color: "grey.light_hover",
+      fontSize: "2.618rem",
+      fontWeight: 700,
+      color: "grey.normal_hover",
       "@media (min-width:600px)": {
-        fontSize: "20rem",
+        fontSize: "2.618rem",
       },
     },
   },

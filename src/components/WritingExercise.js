@@ -129,16 +129,16 @@ export default function WritingExercise({ close, mousePosition }) {
           <Box
             sx={{
               position: "absolute",
-              top: "0%",
-              left: "50%",
-              transform: "translateX(-50%)",
+              bottom: "0%",
+              right: "0%",
               zIndex: "1",
               height: "100%",
               width: "100%",
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              alignItems: "flex-end",
+              justifyContent: "flex-end",
               overflow: "hidden",
+              padding: "0px 10px",
             }}
           >
             <Typography
