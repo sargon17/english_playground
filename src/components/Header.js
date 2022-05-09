@@ -3,7 +3,10 @@ import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
 import { Container } from "@mui/material";
 
-export default function Header() {
+export default function Header({ isAnyGameActive, activeGame }) {
+  // console.log("isAnyGameActive =>", isAnyGameActive);
+  // console.log("activeGame =>", activeGame);
+
   return (
     <Paper
       elevation={0}
@@ -14,15 +17,27 @@ export default function Header() {
       }}
     >
       <Container maxWidth="xxl">
+        {isAnyGameActive && (
+          <Typography
+            variant="h4"
+            color={"grey.lighter"}
+            sx={{
+              position: "relative",
+              zIndex: "2",
+            }}
+          >
+            English Playground
+          </Typography>
+        )}
         <Typography
           variant="title"
-          color={"grey.normal"}
+          color={"grey.normal_active"}
           sx={{
             position: "relative",
             zIndex: "2",
           }}
         >
-          English Playground
+          {!isAnyGameActive ? "English Playground" : activeGame.name}
         </Typography>
       </Container>
     </Paper>

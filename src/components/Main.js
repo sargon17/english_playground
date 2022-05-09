@@ -3,8 +3,7 @@ import Grid from "@mui/material/Grid";
 import MenuCard from "./MenuCard";
 import { Container } from "@mui/material";
 import WritingExercise from "./WritingExercise";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
+import Header from "./Header";
 
 export default function Main({ mousePosition }) {
   let [games, setGames] = useState([
@@ -16,6 +15,9 @@ export default function Main({ mousePosition }) {
       isActive: false,
     },
   ]);
+
+  let isAnyGameActive = games.some((game) => game.isActive);
+  let activeGame = games.find((game) => game.isActive);
 
   function handleClick(game) {
     setGames(
@@ -72,27 +74,7 @@ export default function Main({ mousePosition }) {
 
   return (
     <div>
-      <Paper
-        elevation={0}
-        sx={{
-          width: "100%",
-          backgroundColor: "grey.dark_hover",
-          zIndex: "2",
-        }}
-      >
-        <Container maxWidth="xxl">
-          <Typography
-            variant="title"
-            color={"grey.normal"}
-            sx={{
-              position: "relative",
-              zIndex: "2",
-            }}
-          >
-            English Playground
-          </Typography>
-        </Container>
-      </Paper>
+      <Header isAnyGameActive={isAnyGameActive} activeGame={activeGame} />
       <Container
         maxWidth="xxl"
         sx={{
