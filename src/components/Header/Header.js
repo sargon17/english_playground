@@ -21,7 +21,6 @@ export default function Header({ isAnyGameActive, activeGame }) {
         fontSize: "1.618rem !important",
         fontWeight: 600,
       },
-      // transform: "translateY(-1rem)",
     };
   }
 
