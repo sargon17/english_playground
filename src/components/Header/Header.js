@@ -2,11 +2,32 @@ import React from "react";
 import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
 import { Container } from "@mui/material";
-// import "./Header.scss";
+import "../../dist/css/Header.css";
 
 export default function Header({ isAnyGameActive, activeGame }) {
   // console.log("isAnyGameActive =>", isAnyGameActive);
   // console.log("activeGame =>", activeGame);
+
+  let titleStyle = {
+    fontSize: "2rem",
+  };
+
+  if (isAnyGameActive) {
+    titleStyle = {
+      fontSize: "1rem !important",
+      fontWeight: 400,
+      opacity: 0.5,
+      "@media (min-width:600px)": {
+        fontSize: "1.618rem !important",
+        fontWeight: 600,
+      },
+      // transform: "translateY(-1rem)",
+    };
+  }
+
+  let gameTitleStyle = {
+    fontSize: "1.618rem",
+  };
 
   return (
     <Paper
@@ -20,39 +41,36 @@ export default function Header({ isAnyGameActive, activeGame }) {
       <Container
         maxWidth="xxl"
         sx={{
-          height: "10vh",
-          maxHeight: "10vh",
+          height: "12vh",
+          maxHeight: "12vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          // display: "flex",
         }}
       >
-        {isAnyGameActive && (
-          <Typography
-            variant="h5"
-            color={"grey.lighter"}
-            sx={{
-              position: "relative",
-              zIndex: "2",
-              margin: "0",
-              padding: "0",
-              opacity: "0.5",
-            }}
-          >
-            English Playground
-          </Typography>
-        )}
+        <Typography
+          variant="title"
+          color={!isAnyGameActive ? "grey.normal_active" : "grey.light_active"}
+          sx={{
+            position: "relative",
+            zIndex: "2",
+            transition: "all 0.5s ease-in-out",
+            ...titleStyle,
+          }}
+        >
+          English Playground
+        </Typography>
         <Typography
           variant="title"
           color={!isAnyGameActive ? "grey.normal_active" : "grey.light_hover"}
           sx={{
             position: "relative",
             zIndex: "2",
-            transition: "color 0.5s ease-in-out",
+            transition: "all 0.5s ease-in-out",
+            ...gameTitleStyle,
           }}
         >
-          {!isAnyGameActive ? "English Playground" : activeGame.name}
+          {activeGame ? activeGame.name : ""}
         </Typography>
       </Container>
     </Paper>

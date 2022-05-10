@@ -26,7 +26,7 @@ const classicTheme = createTheme({
         fontSize: "2.618rem",
       },
       "@media (min-width:600px)": {
-        fontSize: "3.236rem",
+        // fontSize: "3.236rem",
       },
       fontWeight: 700,
     },
