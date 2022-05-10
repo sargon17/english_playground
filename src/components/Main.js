@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import MenuCard from "./MenuCard";
 import { Container } from "@mui/material";
 import WritingExercise from "./WritingExercise";
-import Header from "./Header";
+import Header from "./Header/Header";
 
 export default function Main({ mousePosition }) {
   let [games, setGames] = useState([

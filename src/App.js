@@ -4,7 +4,6 @@ import { ThemeProvider } from "@mui/material";
 import classicTheme from "./Themes/ClassicTheme";
 import "./dist/css/general.css";
 
-import Header from "./components/Header";
 import Main from "./components/Main";
 import Blops from "./components/Blops";
 
@@ -17,7 +16,7 @@ function App() {
     <div className="App">
       <Blops
         blops={[blopGreenLg, blopGreenMd, blopGreenSm]}
-        position={{ top: "15%", left: "15%" }}
+        position={{ top: "10%", left: "10%" }}
       />
       <ThemeProvider theme={classicTheme}>
         <Paper
@@ -31,7 +30,6 @@ function App() {
             zIndex: "2",
           }}
         >
-          {/* <Header /> */}
           <Main />
         </Paper>
       </ThemeProvider>

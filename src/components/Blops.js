@@ -16,9 +16,11 @@ export default function Blops({ blops, position }) {
 
   let blopsStyles = {
     position: "absolute",
+    // transform: `translate(-${position[0]}%, -${position[1]}%)`,
     ...position,
   };
 
+  //style={blopsStyles}
   // console.log("blopsStyles =>", blopsStyles);
   const blopsArray = blops.map((blop, index) => {
     return (

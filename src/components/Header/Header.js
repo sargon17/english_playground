@@ -2,6 +2,7 @@ import React from "react";
 import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
 import { Container } from "@mui/material";
+// import "./Header.scss";
 
 export default function Header({ isAnyGameActive, activeGame }) {
   // console.log("isAnyGameActive =>", isAnyGameActive);
@@ -36,6 +37,7 @@ export default function Header({ isAnyGameActive, activeGame }) {
               zIndex: "2",
               margin: "0",
               padding: "0",
+              opacity: "0.5",
             }}
           >
             English Playground
