@@ -13,7 +13,7 @@ export default function Header({ isAnyGameActive, activeGame }) {
       sx={{
         width: "100%",
         backgroundColor: "grey.dark_hover",
-        zIndex: "2",
+        zIndex: "3",
       }}
     >
       <Container
@@ -43,10 +43,11 @@ export default function Header({ isAnyGameActive, activeGame }) {
         )}
         <Typography
           variant="title"
-          color={"grey.normal_active"}
+          color={!isAnyGameActive ? "grey.normal_active" : "grey.light_hover"}
           sx={{
             position: "relative",
             zIndex: "2",
+            transition: "color 0.5s ease-in-out",
           }}
         >
           {!isAnyGameActive ? "English Playground" : activeGame.name}

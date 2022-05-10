@@ -81,160 +81,171 @@ export default function WritingExercise({ close, mousePosition }) {
 
   return (
     <>
-      <Paper elevation={4}>
-        <Box
-          sx={{
-            backgroundColor: "grey.dark",
-            borderRadius: "11px",
-            width: "95%",
-            height: "80vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            position: "absolute",
-            top: "0%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.25)",
-            overflow: "hidden",
-          }}
-        >
+      <Box
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0,0,0,0.8)",
+        }}
+      >
+        <Paper elevation={4}>
           <Box
             sx={{
-              position: "absolute",
-              top: "0%",
-              right: "0%",
-              width: "50px",
-              height: "50px",
+              backgroundColor: "grey.dark",
+              borderRadius: "11px",
+              width: "95%",
+              height: "80vh",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              // cursor: "pointer",
-              zIndex: "10",
-              overflow: "hidden",
-            }}
-          >
-            <IconButton
-              onClick={() => close()}
-              sx={{
-                color: "grey.lighter",
-                "&:hover": {
-                  backgroundColor: "grey.normal_active",
-                },
-              }}
-            >
-              <CloseRoundedIcon
-                sx={{
-                  color: "grey.light_active",
-                }}
-              />
-            </IconButton>
-          </Box>
-          <Blops
-            blops={[blopRedLg, blopRedMd, blopRedSm]}
-            position={{ top: "100%", left: "100%" }}
-          />
-          <Box
-            sx={{
               position: "absolute",
-              bottom: "0%",
-              right: "0%",
-              zIndex: "1",
-              height: "100%",
-              width: "100%",
-              display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "flex-end",
+              top: "55%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.25)",
               overflow: "hidden",
-              padding: "0px 10px",
-            }}
-          >
-            <Typography
-              variant="points"
-              sx={{
-                color: "grey.normal_active",
-              }}
-            >
-              <ProgressCounter
-                progress={correctAnswersNumber}
-                maxprogress={totalRepeats}
-              />
-              {/* {correctAnswersNumber + "/" + totalRepeats} */}
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              zIndex: "2",
-              width: "100%",
-              height: "100%",
-              textAlign: "center",
             }}
           >
             <Box
               sx={{
-                margin: "50px 0",
+                position: "absolute",
+                top: "0%",
+                right: "0%",
+                width: "50px",
+                height: "50px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                // cursor: "pointer",
+                zIndex: "10",
+                overflow: "hidden",
+              }}
+            >
+              <IconButton
+                onClick={() => close()}
+                sx={{
+                  color: "grey.lighter",
+                  "&:hover": {
+                    backgroundColor: "grey.normal_active",
+                  },
+                }}
+              >
+                <CloseRoundedIcon
+                  sx={{
+                    color: "grey.light_active",
+                  }}
+                />
+              </IconButton>
+            </Box>
+            <Blops
+              blops={[blopRedLg, blopRedMd, blopRedSm]}
+              position={{ top: "100%", left: "100%" }}
+            />
+            <Box
+              sx={{
+                position: "absolute",
+                bottom: "0%",
+                right: "0%",
+                zIndex: "1",
+                height: "100%",
+                width: "100%",
+                display: "flex",
+                alignItems: "flex-end",
+                justifyContent: "flex-end",
+                overflow: "hidden",
+                padding: "0px 10px",
               }}
             >
               <Typography
-                variant="title"
-                color={"grey.lighter"}
-                textAlign={"center"}
-              >
-                {/* {theWord ? theWord : selectTheWord()} */}
-                {capitalize(currentWord ? currentWord : "end")}
-              </Typography>
-              <Box
+                variant="points"
                 sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  margin: "auto",
-                  marginTop: "20px",
-                  gap: "10px",
-                  flexWrap: "wrap",
-                  maxWidth: "600px",
-                  minHeight: "24px",
+                  color: "grey.normal_active",
                 }}
               >
-                {resultArray.map((item, index) => {
-                  return <img key={index} src={item} alt="check" />;
-                })}
-              </Box>
+                <ProgressCounter
+                  progress={correctAnswersNumber}
+                  maxprogress={totalRepeats}
+                />
+                {/* {correctAnswersNumber + "/" + totalRepeats} */}
+              </Typography>
             </Box>
             <Box
               sx={{
-                width: "60%",
-                margin: "100px auto",
+                zIndex: "2",
+                width: "100%",
+                height: "100%",
+                textAlign: "center",
               }}
             >
-              <Input
-                fullWidth
-                placeholder="Write the word here"
-                variant="outlined"
-                disableUnderline
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    checkWord(e.target.value);
-                  }
-                }}
+              <Box
                 sx={{
-                  backgroundColor: "grey.dark_hover",
-                  textAlign: "center",
-                  color: "grey.light_active",
-                  borderRadius: "11px",
-                  padding: "12px",
-                  fontSize: "1.2rem",
-                  fontWeight: "bold",
-                  opacity: "0.8",
+                  margin: "50px 0",
                 }}
-                inputRef={(ref) => {
-                  input.current = ref;
+              >
+                <Typography
+                  variant="title"
+                  color={"grey.lighter"}
+                  textAlign={"center"}
+                >
+                  {/* {theWord ? theWord : selectTheWord()} */}
+                  {capitalize(currentWord ? currentWord : "end")}
+                </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "auto",
+                    marginTop: "20px",
+                    gap: "10px",
+                    flexWrap: "wrap",
+                    maxWidth: "600px",
+                    minHeight: "24px",
+                  }}
+                >
+                  {resultArray.map((item, index) => {
+                    return <img key={index} src={item} alt="check" />;
+                  })}
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  width: "60%",
+                  margin: "100px auto",
                 }}
-              />
+              >
+                <Input
+                  fullWidth
+                  placeholder="Write the word here"
+                  variant="outlined"
+                  disableUnderline
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      checkWord(e.target.value);
+                    }
+                  }}
+                  sx={{
+                    backgroundColor: "grey.dark_hover",
+                    textAlign: "center",
+                    color: "grey.light_active",
+                    borderRadius: "11px",
+                    padding: "12px",
+                    fontSize: "1.2rem",
+                    fontWeight: "bold",
+                    opacity: "0.8",
+                  }}
+                  inputRef={(ref) => {
+                    input.current = ref;
+                  }}
+                />
+              </Box>
             </Box>
           </Box>
-        </Box>
-      </Paper>
+        </Paper>
+      </Box>
     </>
   );
 }
