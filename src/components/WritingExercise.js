@@ -23,12 +23,6 @@ export default function WritingExercise({ close, mousePosition }) {
   let words = wordsData;
   let theWord = setTheWord();
   let [currentWord, setCurrentWord] = useState(theWord);
-  let input = useRef(null);
-  let [inputValue, setInputValue] = useState("");
-
-  function handleInputChange(e) {
-    setInputValue(e.target.value);
-  }
 
   function selectTheWord() {
     // console.log("word =>", currentWord);
@@ -44,7 +38,9 @@ export default function WritingExercise({ close, mousePosition }) {
     return words[randomNumber];
   }
 
-  function checkWord(word) {
+  function checkWord(element) {
+    console.log("element =>", element);
+    let word = element.target.value;
     word = word.toLowerCase().trim();
     if (word === currentWord) {
       setCorrectAnswersNumber(correctAnswersNumber + 1);
@@ -54,7 +50,7 @@ export default function WritingExercise({ close, mousePosition }) {
       addPoints(false);
       setTotalRepeats(totalRepeats + 2);
     }
-    cleanInput();
+    cleanInput(element);
   }
 
   function checkCorrectsTimes() {
@@ -80,9 +76,8 @@ export default function WritingExercise({ close, mousePosition }) {
     }
   }
 
-  function cleanInput() {
-    // console.log(input.current.value);
-    input.current.value = "";
+  function cleanInput(element) {
+    element.target.value = "";
   }
 
   return (
@@ -231,7 +226,7 @@ export default function WritingExercise({ close, mousePosition }) {
                   },
                 }}
               >
-                <CustomInput onChange={handleInputChange} onClick={checkWord} />
+                <CustomInput onClick={checkWord} />
               </Box>
             </Box>
           </Box>
