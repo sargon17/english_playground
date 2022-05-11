@@ -1,0 +1,17 @@
+@import "../../scss/variables.scss";
+
+.custom__input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 30px;
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #fff;
+  //   background-color: #0000007e;
+  transition: all 0.3s ease-in-out;
+  border-radius: 11px;
+  text-align: center;
+}
