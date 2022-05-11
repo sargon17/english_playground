@@ -221,6 +221,9 @@ export default function WritingExercise({ close, mousePosition }) {
                 sx={{
                   width: "60%",
                   margin: "100px auto",
+                  "@media (max-width: 600px)": {
+                    width: "98%",
+                  },
                 }}
               >
                 <CustomInput onChange={handleInputChange} onClick={checkWord} />

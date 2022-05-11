@@ -59,4 +59,16 @@
 .custom__input:hover::placeholder {
   color: #3b3b3b;
 }
+
+@media screen and (max-width: 300px) {
+  .custom__input {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .custom__input {
+    font-size: 2.618rem;
+  }
+}
 /*# sourceMappingURL=CustomInput.css.map */
