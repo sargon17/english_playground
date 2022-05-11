@@ -134,14 +134,19 @@ export default function WritingExercise({ close, mousePosition }) {
                 onClick={() => close()}
                 sx={{
                   color: "grey.lighter",
+                  transition: "all 0.3s ease-in-out",
                   "&:hover": {
                     backgroundColor: "grey.normal_active",
+                    "& svg": {
+                      color: "grey.light_active",
+                    },
                   },
                 }}
               >
                 <CloseRoundedIcon
                   sx={{
-                    color: "grey.light_active",
+                    color: "grey.normal",
+                    transition: "all 0.3s ease-in-out",
                   }}
                 />
               </IconButton>
