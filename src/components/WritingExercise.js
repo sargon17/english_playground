@@ -10,6 +10,7 @@ import { IconButton } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Blops from "./Blops";
 import ProgressCounter from "./ProgressCounter/ProgressCounter";
+import CustomInput from "./CustomInput/CustomInput";
 
 import blopRedLg from "./../assets/red-blops/blop-red-lg.svg";
 import blopRedMd from "./../assets/red-blops/blop-red-md.svg";
@@ -217,6 +218,7 @@ export default function WritingExercise({ close, mousePosition }) {
                   margin: "100px auto",
                 }}
               >
+                <CustomInput />
                 <Input
                   fullWidth
                   placeholder="Write the word here"
