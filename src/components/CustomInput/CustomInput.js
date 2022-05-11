@@ -11,7 +11,6 @@ export default function CustomInput({ onClick }) {
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             onClick(e);
-            // e.target.value = "";
           }
         }}
       />

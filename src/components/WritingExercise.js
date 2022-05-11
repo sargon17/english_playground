@@ -39,7 +39,7 @@ export default function WritingExercise({ close, mousePosition }) {
   }
 
   function checkWord(element) {
-    console.log("element =>", element);
+    // console.log("element =>", element);
     let word = element.target.value;
     word = word.toLowerCase().trim();
     if (word === currentWord) {
