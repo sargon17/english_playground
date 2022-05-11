@@ -3,14 +3,60 @@
   height: 100%;
   border: none;
   outline: none;
-  padding: 30px;
+  padding: 24px;
   font-size: 1.5rem;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  color: #868686;
+  background-color: #111111;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   border-radius: 11px;
   text-align: center;
+  font-size: 1.618rem;
+}
+
+.custom__input::-webkit-input-placeholder {
+  color: #323232;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom__input:-ms-input-placeholder {
+  color: #323232;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom__input::-ms-input-placeholder {
+  color: #323232;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom__input::placeholder {
+  color: #323232;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom__input:hover {
+  background-color: #111111;
+}
+
+.custom__input:hover::-webkit-input-placeholder {
+  color: #3b3b3b;
+}
+
+.custom__input:hover:-ms-input-placeholder {
+  color: #3b3b3b;
+}
+
+.custom__input:hover::-ms-input-placeholder {
+  color: #3b3b3b;
+}
+
+.custom__input:hover::placeholder {
+  color: #3b3b3b;
 }
 /*# sourceMappingURL=CustomInput.css.map */

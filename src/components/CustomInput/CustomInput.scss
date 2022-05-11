@@ -5,13 +5,27 @@
   height: 100%;
   border: none;
   outline: none;
-  padding: 30px;
+  padding: 24px;
   font-size: 1.5rem;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  color: #fff;
-  //   background-color: #0000007e;
+  font-family: $ep-font-family;
+  font-weight: $ep-font-weight-bold;
+  color: $ep-grey-light_active;
+  background-color: $ep-grey-dark_hover;
   transition: all 0.3s ease-in-out;
   border-radius: 11px;
   text-align: center;
+  font-size: $ep-font-size-md;
+
+  &::placeholder {
+    color: $ep-grey-normal_active;
+    transition: $ep-transition;
+  }
+
+  &:hover {
+    background-color: $ep-grey-dark_hover;
+
+    &::placeholder {
+      color: $ep-grey-normal_hover;
+    }
+  }
 }
