@@ -24,6 +24,11 @@ export default function WritingExercise({ close, mousePosition }) {
   let theWord = setTheWord();
   let [currentWord, setCurrentWord] = useState(theWord);
   let input = useRef(null);
+  let [inputValue, setInputValue] = useState("");
+
+  function handleInputChange(e) {
+    setInputValue(e.target.value);
+  }
 
   function selectTheWord() {
     // console.log("word =>", currentWord);
@@ -218,31 +223,7 @@ export default function WritingExercise({ close, mousePosition }) {
                   margin: "100px auto",
                 }}
               >
-                <CustomInput />
-                <Input
-                  fullWidth
-                  placeholder="Write the word here"
-                  variant="outlined"
-                  disableUnderline
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      checkWord(e.target.value);
-                    }
-                  }}
-                  sx={{
-                    backgroundColor: "grey.dark_hover",
-                    textAlign: "center",
-                    color: "grey.light_active",
-                    borderRadius: "11px",
-                    padding: "12px",
-                    fontSize: "1.2rem",
-                    fontWeight: "bold",
-                    opacity: "0.8",
-                  }}
-                  inputRef={(ref) => {
-                    input.current = ref;
-                  }}
-                />
+                <CustomInput onChange={handleInputChange} onClick={checkWord} />
               </Box>
             </Box>
           </Box>
