@@ -191,6 +191,22 @@ export default function WritingExercise({ close, mousePosition }) {
                   margin: "50px 0",
                 }}
               >
+                <Box
+                  sx={{
+                    width: "60%",
+                    margin: "4rem auto",
+                  }}
+                >
+                  <Typography
+                    variant="cardText"
+                    sx={{
+                      color: "grey.normal",
+                    }}
+                  >
+                    Automate your writing and learn how to do it faster and more
+                    correctly
+                  </Typography>
+                </Box>
                 <Typography
                   variant="title"
                   color={"grey.lighter"}

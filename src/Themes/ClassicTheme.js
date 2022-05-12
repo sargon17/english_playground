@@ -45,6 +45,9 @@ const classicTheme = createTheme({
         fontSize: "2.618rem",
       },
     },
+    cardText: {
+      fontSize: "1.618rem",
+    },
   },
 });
 
