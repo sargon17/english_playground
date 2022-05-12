@@ -1,8 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Box } from "@mui/system";
 import { capitalize, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { Input } from "@mui/material";
 import check from "./../assets/check-circle-fill.svg";
 import xCircle from "./../assets/x-circle-fill.svg";
 import wordsData from "./../data/writingEx_data.json";
@@ -212,7 +211,6 @@ export default function WritingExercise({ close, mousePosition }) {
                   color={"grey.lighter"}
                   textAlign={"center"}
                 >
-                  {/* {theWord ? theWord : selectTheWord()} */}
                   {capitalize(currentWord ? currentWord : "end")}
                 </Typography>
                 <Box
