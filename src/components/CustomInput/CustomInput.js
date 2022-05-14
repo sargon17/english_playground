@@ -7,7 +7,7 @@ export default function CustomInput({ onClick, currentWord }) {
   // Function that displays the result of the user's input changing the color of the input
   function displayStatus(e) {
     // set the input class to display the result of the user's input
-    if (e.target.value === currentWord) {
+    if (e.target.value.trim().toLowerCase() === currentWord) {
       setInputClasses(["custom-input", "custom-input-correct"]);
     } else {
       setInputClasses(["custom-input", "custom-input-incorrect"]);
