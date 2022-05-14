@@ -38,10 +38,14 @@
   }
 
   &-correct {
+    // ! IMPORTANT: if you need to change the  animation duration you need to change
+    // ! it in the CustomInput.js file on setTimout too, to the same value
     animation: exitColorCorrect 0.5s ease-in-out;
   }
 
   &-incorrect {
+    // ! IMPORTANT: if you need to change the  animation duration you need to change
+    // ! it in the CustomInput.js file on setTimout too, to the same value
     animation: exitColorIncorrect 0.5s ease-in-out;
   }
 }

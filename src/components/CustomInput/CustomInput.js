@@ -4,18 +4,19 @@ import "../../dist/css/CustomInput.css";
 export default function CustomInput({ onClick, currentWord }) {
   let [inputClasses, setInputClasses] = useState(["custom-input"]);
 
+  // Function that displays the result of the user's input changing the color of the input
   function displayStatus(e) {
-    console.log("e.target.value", e.target.value, "word", currentWord);
-
+    // set the input class to display the result of the user's input
     if (e.target.value === currentWord) {
       setInputClasses(["custom-input", "custom-input-correct"]);
     } else {
       setInputClasses(["custom-input", "custom-input-incorrect"]);
     }
-
+    // clean the classes of the input to display the default style
     setTimeout(() => {
       setInputClasses(["custom-input"]);
-    }, 500);
+    }, 500); // ! IMPORTANT: the timeout is set to 500ms to avoid the input to be displayed with the wrong color
+    // ! if the duration of the animaton change, need to change the timeout too
   }
 
   return (
