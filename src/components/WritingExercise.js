@@ -240,7 +240,7 @@ export default function WritingExercise({ close, mousePosition }) {
                   },
                 }}
               >
-                <CustomInput onClick={checkWord} />
+                <CustomInput onClick={checkWord} currentWord={currentWord} />
               </Box>
             </Box>
           </Box>
