@@ -1,6 +1,6 @@
 @import "../../scss/variables.scss";
 
-.custom__input {
+.custom-input {
   width: 100%;
   height: 100%;
   border: none;
@@ -35,5 +35,31 @@
 
   @media screen and (min-width: 768px) {
     font-size: $ep-font-size-lg;
+  }
+
+  &-correct {
+    animation: exitColorCorrect 0.5s ease-in-out;
+  }
+
+  &-incorrect {
+    animation: exitColorIncorrect 0.5s ease-in-out;
+  }
+}
+
+// ANUMATION
+@keyframes exitColorCorrect {
+  0% {
+    background-color: $ep-primary-green;
+  }
+  100% {
+    background-color: $ep-grey-dark_hover;
+  }
+}
+@keyframes exitColorIncorrect {
+  0% {
+    background-color: $ep-primary-red;
+  }
+  100% {
+    background-color: $ep-grey-dark_hover;
   }
 }
