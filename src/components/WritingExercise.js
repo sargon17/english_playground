@@ -42,10 +42,22 @@ export default function WritingExercise({ close, mousePosition }) {
   let theWord = setTheWord();
   let [currentWord, setCurrentWord] = useState(theWord);
   let [isWtwOpen, setIsWtwOpen] = useState(false);
+
+  // conditioned styles
   let addIconStyle = {};
+  let addBtnStyle = {};
   if (isWtwOpen) {
     addIconStyle = {
       transform: "rotate(135deg)",
+      color: "#ef6f6c",
+    };
+    addBtnStyle = {
+      "&:hover": {
+        backgroundColor: "#ef6e6c2f",
+        "& svg": {
+          color: "#ef6f6c",
+        },
+      },
     };
   }
 
@@ -270,6 +282,7 @@ export default function WritingExercise({ close, mousePosition }) {
                           color: "grey.light_active",
                         },
                       },
+                      ...addBtnStyle,
                     }}
                     onClick={() => {
                       setIsWtwOpen((prev) => !prev);
