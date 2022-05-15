@@ -7,14 +7,18 @@ import xCircle from "./../assets/x-circle-fill.svg";
 import wordsData from "./../data/writingEx_data.json";
 import { IconButton } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import Blops from "./Blops";
-import ProgressCounter from "./ProgressCounter/ProgressCounter";
-import CustomInput from "./CustomInput/CustomInput";
 
 // Icons
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 
+// Utils
 import checkScrollPosition from "../utlities/checkScrollPosition";
+
+// Components
+import Blops from "./Blops";
+import ProgressCounter from "./ProgressCounter/ProgressCounter";
+import CustomInput from "./CustomInput/CustomInput";
+import WordToWrite from "./WordToWrite/WordToWrite";
 
 import blopRedLg from "./../assets/red-blops/blop-red-lg.svg";
 import blopRedMd from "./../assets/red-blops/blop-red-md.svg";
@@ -222,6 +226,8 @@ export default function WritingExercise({ close, mousePosition }) {
                     alignItems: "center",
                     justifyContent: "center",
                     wrap: "wrap",
+                    maxWidth: "90%",
+                    margin: "0 auto",
                   }}
                 >
                   {/* Add Words Icon => */}
@@ -238,12 +244,15 @@ export default function WritingExercise({ close, mousePosition }) {
                     }}
                   >
                     <AddCircleRoundedIcon
+                      fontSize="small"
                       sx={{
-                        color: "grey.normal",
+                        color: "grey.normal_active",
                         transition: "all 0.3s ease-in-out",
                       }}
                     />
                   </IconButton>
+                  <WordToWrite />
+
                   {/* / Add Words Icon */}
                   {/* Current Word => */}
                   <Typography

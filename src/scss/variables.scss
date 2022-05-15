@@ -17,7 +17,7 @@ $ep-primary-red: #ef6f6c;
 $ep-font-family: "Open Sans", sans-serif;
 
 // Font sizes
-$ep-font-size-xs: 0.618rem;
+$ep-font-size-xs: 0.718rem;
 $ep-font-size-sm: 1rem;
 $ep-font-size-md: 1.618rem;
 $ep-font-size-lg: 2.618rem;
@@ -35,3 +35,9 @@ $ep-font-weight-black: 900;
 
 // transition
 $ep-transition: all 0.3s ease-in-out;
+
+// shadows
+$ep-box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.35);
+
+// Border radius
+$ep-border-radius: 11px;

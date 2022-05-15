@@ -22,7 +22,7 @@ const classicTheme = createTheme({
     title: {
       lineHeight: 1,
       fontSize: "1.618rem",
-      "@media (min-width: 300px)": {
+      "@media (min-width: 350px)": {
         fontSize: "2.618rem",
       },
       "@media (min-width:600px)": {
