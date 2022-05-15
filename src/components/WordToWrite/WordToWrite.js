@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 export default function WordToWrite() {
   const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
     "wordsToWrite",
-    []
+    ["interview", "house", "car"]
   );
   //   let [wordsList, setWordsList] = useState([]);
   let [displayedWords, setDisplayedWords] = useState([]);
@@ -32,6 +32,15 @@ export default function WordToWrite() {
         );
       }),
     ]);
+  }
+
+  function saveWords() {
+    console.log("saveWords====BEFORE", wordsToWrite);
+    console.log("anotherList", ...anotherList);
+    setWordsToWrite([...anotherList]);
+    // setWordsToWrite(() => [...anotherList, ""]);
+    console.log("saveWords=====AFTER", wordsToWrite);
+    // setWordsToWrite(() => [...wordsToWrite, "hello"]);
   }
 
   return (
@@ -66,7 +75,13 @@ export default function WordToWrite() {
           />
         </div>
       </div>
-      <Button variant="outlined" color="primary">
+      <Button
+        variant="outlined"
+        color="primary"
+        onClick={() => {
+          saveWords();
+        }}
+      >
         Save
       </Button>
     </div>
