@@ -11,6 +11,8 @@ import Blops from "./Blops";
 import ProgressCounter from "./ProgressCounter/ProgressCounter";
 import CustomInput from "./CustomInput/CustomInput";
 
+import checkScrollPosition from "../utlities/checkScrollPosition";
+
 import blopRedLg from "./../assets/red-blops/blop-red-lg.svg";
 import blopRedMd from "./../assets/red-blops/blop-red-md.svg";
 import blopRedSm from "./../assets/red-blops/blop-red-sm.svg";
@@ -124,8 +126,12 @@ export default function WritingExercise({ close, mousePosition }) {
                 overflow: "hidden",
               }}
             >
+              {/*Close button*/}
               <IconButton
-                onClick={() => close()}
+                onClick={() => {
+                  close();
+                  checkScrollPosition();
+                }}
                 sx={{
                   color: "grey.lighter",
                   transition: "all 0.3s ease-in-out",
@@ -145,10 +151,13 @@ export default function WritingExercise({ close, mousePosition }) {
                 />
               </IconButton>
             </Box>
+            {/*Blops => */}
             <Blops
               blops={[blopRedLg, blopRedMd, blopRedSm]}
               position={{ top: "100%", left: "100%" }}
             />
+            {/* / Blops */}
+            {/* Progress counter Container => */}
             <Box
               sx={{
                 position: "absolute",
@@ -164,19 +173,12 @@ export default function WritingExercise({ close, mousePosition }) {
                 padding: "0px 10px",
               }}
             >
-              <Typography
-                variant="points"
-                sx={{
-                  color: "grey.normal_active",
-                }}
-              >
-                <ProgressCounter
-                  progress={correctAnswersNumber}
-                  maxprogress={totalRepeats}
-                />
-                {/* {correctAnswersNumber + "/" + totalRepeats} */}
-              </Typography>
+              <ProgressCounter
+                progress={correctAnswersNumber}
+                maxprogress={totalRepeats}
+              />
             </Box>
+            {/* / Progress counter Container */}
             <Box
               sx={{
                 zIndex: "2",
@@ -196,6 +198,7 @@ export default function WritingExercise({ close, mousePosition }) {
                     margin: "4rem auto",
                     "@media (max-width: 768px)": {
                       width: "90%",
+                      margin: "2rem auto",
                     },
                   }}
                 >
@@ -229,6 +232,7 @@ export default function WritingExercise({ close, mousePosition }) {
                     minHeight: "24px",
                     "@media (max-width: 768px)": {
                       gap: "4px",
+                      mmargin: "1rem auto",
                       "& > img": {
                         width: "18px",
                         height: "18px",
