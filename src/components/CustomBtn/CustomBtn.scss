@@ -9,4 +9,17 @@
   font-size: $ep-font-size-sm;
   font-weight: $ep-font-weight-bold;
   padding: 3px auto;
+  transition: $ep-transition;
+  cursor: pointer;
+
+  &:hover {
+    color: $ep-grey-light_hover;
+    background-color: $ep-grey-dark_hover;
+  }
+
+  &:active {
+    transition: all 3ms ease-in-out;
+    color: $ep-grey-light_active;
+    background-color: $ep-grey-dark_active;
+  }
 }

@@ -3,7 +3,10 @@ import "../../dist/css/CustomBtn.css";
 
 export default function CustomBtn({ onClick, content, variant }) {
   let [btnClasses, setBtnClasses] = useState(["custom-btn"]);
-  //   let btnClasses = ["custom-btn", "custom-btn-outline"];
+
+  //   if (variant === "primary") {
+  //     setBtnClasses(["custom-btn", "custom-btn-prymary"]);
+  //   }
 
   return (
     <>

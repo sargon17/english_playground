@@ -7,5 +7,20 @@
   font-size: 1rem;
   font-weight: 700;
   padding: 3px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.custom-btn:hover {
+  color: #9b9b9b;
+  background-color: #111111;
+}
+
+.custom-btn:active {
+  -webkit-transition: all 3ms ease-in-out;
+  transition: all 3ms ease-in-out;
+  color: #868686;
+  background-color: #080808;
 }
 /*# sourceMappingURL=CustomBtn.css.map */
