@@ -227,6 +227,13 @@ export default function WritingExercise({ close, mousePosition }) {
                     flexWrap: "wrap",
                     maxWidth: "600px",
                     minHeight: "24px",
+                    "@media (max-width: 768px)": {
+                      gap: "4px",
+                      "& > img": {
+                        width: "18px",
+                        height: "18px",
+                      },
+                    },
                   }}
                 >
                   {resultArray.map((item, index) => {
