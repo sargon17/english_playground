@@ -41,6 +41,13 @@ export default function WritingExercise({ close, mousePosition }) {
   let [words, setWords] = useState([]);
   let theWord = setTheWord();
   let [currentWord, setCurrentWord] = useState(theWord);
+  let [isWtwOpen, setIsWtwOpen] = useState(false);
+  let addIconStyle = {};
+  if (isWtwOpen) {
+    addIconStyle = {
+      transform: "rotate(135deg)",
+    };
+  }
 
   useEffect(() => {
     if (wordsToWrite !== undefined) {
@@ -264,16 +271,20 @@ export default function WritingExercise({ close, mousePosition }) {
                         },
                       },
                     }}
+                    onClick={() => {
+                      setIsWtwOpen((prev) => !prev);
+                    }}
                   >
                     <AddCircleRoundedIcon
                       fontSize="small"
                       sx={{
                         color: "grey.normal_active",
                         transition: "all 0.3s ease-in-out",
+                        ...addIconStyle,
                       }}
                     />
                   </IconButton>
-                  <WordToWrite />
+                  {isWtwOpen && <WordToWrite />}
 
                   {/* / Add Words Icon */}
                   {/* Current Word => */}
