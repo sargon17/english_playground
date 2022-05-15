@@ -2,9 +2,11 @@
 
 .custom-btn {
   width: 100%;
-  max-width: 427px;
-  height: fit-content;
-  min-height: 177px;
-  background: #000;
-  color: aqua;
+  color: $ep-grey-lighter;
+  background-color: $ep-grey-dark;
+  border: none;
+  border-radius: $ep-border-radius-btn;
+  font-size: $ep-font-size-sm;
+  font-weight: $ep-font-weight-bold;
+  padding: 3px auto;
 }

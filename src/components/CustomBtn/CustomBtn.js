@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import "../../dist/css/CustomInput.css";
+import react, { useState } from "react";
+import "../../dist/css/CustomBtn.css";
 
 export default function CustomBtn({ onClick, content, variant }) {
-  let [btnClasses, setBtnClasses] = useState([
-    "custom-btn, custom-btn-outline",
-  ]);
+  let [btnClasses, setBtnClasses] = useState(["custom-btn"]);
+  //   let btnClasses = ["custom-btn", "custom-btn-outline"];
 
   return (
     <>
