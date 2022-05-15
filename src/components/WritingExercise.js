@@ -32,7 +32,7 @@ export default function WritingExercise({ close, mousePosition }) {
     []
   );
 
-  console.log(wordsToWrite);
+  // console.log(wordsToWrite);
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
   let [resultArray, setResultArray] = useState([]);
   let [totalRepeats, setTotalRepeats] = useState(20);
@@ -52,7 +52,7 @@ export default function WritingExercise({ close, mousePosition }) {
     setCurrentWord(theWord);
   }, [words]);
 
-  console.log(words);
+  // console.log(words);
 
   function selectTheWord() {
     // console.log("word =>", currentWord);
