@@ -11,6 +11,9 @@ import Blops from "./Blops";
 import ProgressCounter from "./ProgressCounter/ProgressCounter";
 import CustomInput from "./CustomInput/CustomInput";
 
+// Icons
+import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
+
 import checkScrollPosition from "../utlities/checkScrollPosition";
 
 import blopRedLg from "./../assets/red-blops/blop-red-lg.svg";
@@ -212,13 +215,47 @@ export default function WritingExercise({ close, mousePosition }) {
                     correctly
                   </Typography>
                 </Box>
-                <Typography
-                  variant="title"
-                  color={"grey.lighter"}
-                  textAlign={"center"}
+                {/* Current Word Block => */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    wrap: "wrap",
+                  }}
                 >
-                  {capitalize(currentWord ? currentWord : "end")}
-                </Typography>
+                  {/* Add Words Icon => */}
+                  <IconButton
+                    sx={{
+                      color: "grey.lighter",
+                      transition: "all 0.3s ease-in-out",
+                      "&:hover": {
+                        backgroundColor: "grey.normal_active",
+                        "& svg": {
+                          color: "grey.light_active",
+                        },
+                      },
+                    }}
+                  >
+                    <AddCircleRoundedIcon
+                      sx={{
+                        color: "grey.normal",
+                        transition: "all 0.3s ease-in-out",
+                      }}
+                    />
+                  </IconButton>
+                  {/* / Add Words Icon */}
+                  {/* Current Word => */}
+                  <Typography
+                    variant="title"
+                    color={"grey.lighter"}
+                    textAlign={"center"}
+                  >
+                    {capitalize(currentWord ? currentWord : "end")}
+                  </Typography>
+                  {/* / Current Word */}
+                  {/* / Current Word Block */}
+                </Box>
                 <Box
                   sx={{
                     display: "flex",
