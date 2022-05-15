@@ -1,7 +1,7 @@
 @import "../../scss/variables.scss";
 
 .wtw_container {
-  width: 100%;
+  width: 95%;
   max-width: 427px;
   height: fit-content;
   min-height: 177px;
@@ -15,7 +15,7 @@
   box-shadow: $ep-box-shadow;
   border-radius: $ep-border-radius;
   position: absolute;
-  transform: translate(-30%, 65%);
+  transform: translate(0, 65%);
 
   .wtw_title-container {
     width: 100%;
