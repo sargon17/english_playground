@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box } from "@mui/system";
 import { capitalize, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
@@ -7,6 +7,8 @@ import xCircle from "./../assets/x-circle-fill.svg";
 import wordsData from "./../data/writingEx_data.json";
 import { IconButton } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+
+import useLocalStorage from "@d2k/react-localstorage";
 
 // Icons
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
@@ -25,12 +27,32 @@ import blopRedMd from "./../assets/red-blops/blop-red-md.svg";
 import blopRedSm from "./../assets/red-blops/blop-red-sm.svg";
 
 export default function WritingExercise({ close, mousePosition }) {
+  const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
+    "wordsToWrite",
+    []
+  );
+
+  console.log(wordsToWrite);
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
   let [resultArray, setResultArray] = useState([]);
   let [totalRepeats, setTotalRepeats] = useState(20);
-  let words = wordsData;
+  // let words = wordsData;
+  // let words = wordsToWrite ? wordsToWrite : [];
+  let [words, setWords] = useState([]);
   let theWord = setTheWord();
   let [currentWord, setCurrentWord] = useState(theWord);
+
+  useEffect(() => {
+    if (wordsToWrite !== undefined) {
+      setWords(wordsToWrite);
+      theWord = setTheWord();
+    }
+  }, [wordsToWrite]);
+  useEffect(() => {
+    setCurrentWord(theWord);
+  }, [words]);
+
+  console.log(words);
 
   function selectTheWord() {
     // console.log("word =>", currentWord);

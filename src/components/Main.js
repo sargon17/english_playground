@@ -4,8 +4,14 @@ import MenuCard from "./MenuCard";
 import { Container } from "@mui/material";
 import WritingExercise from "./WritingExercise";
 import Header from "./Header/Header";
+import useLocalStorage from "@d2k/react-localstorage";
 
 export default function Main({ mousePosition }) {
+  const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
+    "wordsToWrite",
+    ["interview", "house", "car"]
+  );
+
   let [games, setGames] = useState([
     {
       name: "Writing Exercise",

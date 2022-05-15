@@ -1,5 +1,6 @@
 import react from "react";
 import "../../dist/css/WordToWite.css";
+import useLocalStorage from "@d2k/react-localstorage";
 
 export default function WordToWrite() {
   return (
@@ -17,7 +18,11 @@ export default function WordToWrite() {
           <span className="wtw_input-word"> interview </span>
           <span className="wtw_input-word"> interview </span>
           <span className="wtw_input-word"> interview </span>
-          <input type="text" className="wtw_input" placeholder="Input here" />
+          <input
+            type="text"
+            className="wtw_input"
+            placeholder="Write here..."
+          />
         </div>
       </div>
     </div>
