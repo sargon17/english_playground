@@ -58,6 +58,7 @@
 
 .wtw_container .wtw_input-container .textarea {
   width: 100%;
+  min-height: 120px;
   padding: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -68,6 +69,8 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 5px;
