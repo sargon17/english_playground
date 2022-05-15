@@ -1,0 +1,11 @@
+.custom-btn {
+  width: 100%;
+  max-width: 427px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: 177px;
+  background: #000;
+  color: aqua;
+}
+/*# sourceMappingURL=CustomBtn.css.map */

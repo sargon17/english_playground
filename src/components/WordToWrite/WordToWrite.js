@@ -1,7 +1,8 @@
 import react, { useEffect, useState } from "react";
 import "../../dist/css/WordToWite.css";
 import useLocalStorage from "@d2k/react-localstorage";
-import Button from "@mui/material/Button";
+
+import CustomBtn from "../CustomBtn/CustomBtn";
 
 export default function WordToWrite() {
   const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
@@ -75,15 +76,13 @@ export default function WordToWrite() {
           />
         </div>
       </div>
-      <Button
-        variant="outlined"
-        color="primary"
+      <CustomBtn
+        content="Save"
+        variant="primary"
         onClick={() => {
           saveWords();
         }}
-      >
-        Save
-      </Button>
+      />
     </div>
   );
 }
