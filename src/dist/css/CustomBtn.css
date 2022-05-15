@@ -6,7 +6,7 @@
   border-radius: 9px;
   font-size: 1rem;
   font-weight: 700;
-  padding: 3px auto;
+  padding: 3px;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   cursor: pointer;

@@ -36,12 +36,7 @@ export default function WordToWrite() {
   }
 
   function saveWords() {
-    console.log("saveWords====BEFORE", wordsToWrite);
-    console.log("anotherList", ...anotherList);
     setWordsToWrite([...anotherList]);
-    // setWordsToWrite(() => [...anotherList, ""]);
-    console.log("saveWords=====AFTER", wordsToWrite);
-    // setWordsToWrite(() => [...wordsToWrite, "hello"]);
   }
 
   return (
@@ -67,7 +62,7 @@ export default function WordToWrite() {
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 // setWordsList([...wordsList, e.target.value]);
-                anotherList.push(e.target.value);
+                anotherList.push(e.target.value.toLowerCase().trim());
                 // console.log(wordsList);
                 renderWordsToWrite();
                 e.target.value = "";
