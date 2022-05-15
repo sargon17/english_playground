@@ -194,6 +194,9 @@ export default function WritingExercise({ close, mousePosition }) {
                   sx={{
                     width: "60%",
                     margin: "4rem auto",
+                    "@media (max-width: 768px)": {
+                      width: "90%",
+                    },
                   }}
                 >
                   <Typography
