@@ -1,0 +1,43 @@
+@import "../../scss/variables.scss";
+
+.notification {
+  position: fixed;
+  top: 10px;
+  left: 1%;
+  width: 98%;
+  background: $ep-grey-normal_active;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  border-radius: $ep-border-radius;
+  padding: 7px;
+  box-shadow: $ep-box-shadow;
+  transition: $ep-transition;
+
+  .notification-text {
+    font-size: $ep-font-size-sm;
+    font-weight: $ep-font-weight-semibold;
+    color: $ep-grey-light_hover;
+    text-align: center;
+  }
+}
+
+.success {
+  background: $ep-primary-green;
+  .notification-text {
+    color: #fff;
+  }
+}
+.error {
+  background: $ep-primary-red;
+  .notification-text {
+    color: #fff;
+  }
+}
+.warning {
+  background: $ep-primary-yellow;
+  .notification-text {
+    color: #fff;
+  }
+}
