@@ -14,6 +14,13 @@ export default function WordToWrite() {
   //   let [wordsList, setWordsList] = useState([]);
   let [displayedWords, setDisplayedWords] = useState([]);
   let anotherList = wordsToWrite;
+  let [isNotification, setIsNotification] = useState(false);
+  let [notification, setNotification] = useState({
+    message: "",
+    type: "",
+    position: "",
+    duration: "",
+  });
 
   useEffect(() => {
     console.log("useEffect", wordsToWrite);
@@ -39,6 +46,22 @@ export default function WordToWrite() {
 
   function saveWords() {
     setWordsToWrite([...anotherList]);
+    displayNotification("Saved Correctly", "success", "bottom");
+  }
+
+  function displayNotification(message, type, position) {
+    // Notification(message, type, position);
+    setNotification({
+      message: message,
+      type: type,
+      position: position,
+      duration: 3000,
+    });
+    setIsNotification(true);
+
+    setTimeout(() => {
+      setIsNotification(false);
+    }, 3500);
   }
 
   return (
@@ -82,7 +105,15 @@ export default function WordToWrite() {
           saveWords();
         }}
       />
-      <Notification message={"Changes Saved"} type="success" />
+
+      {isNotification && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          position={notification.position}
+          duration={notification.duration}
+        />
+      )}
     </div>
   );
 }

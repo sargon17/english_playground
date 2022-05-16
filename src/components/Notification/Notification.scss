@@ -1,9 +1,7 @@
 @import "../../scss/variables.scss";
 
 .notification {
-  position: fixed;
-  top: 10px;
-  left: 1%;
+  position: absolute;
   width: 98%;
   background: $ep-grey-normal_active;
   display: flex;
@@ -15,6 +13,23 @@
   box-shadow: $ep-box-shadow;
   transition: $ep-transition;
 
+  &-center {
+    //   position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &-top {
+    top: 10px;
+    left: 1%;
+  }
+  &-bottom {
+    bottom: 10px;
+    left: 1%;
+  }
+  &-hide {
+    animation: easeOut 0.5s ease-out;
+  }
   .notification-text {
     font-size: $ep-font-size-sm;
     font-weight: $ep-font-weight-semibold;
@@ -39,5 +54,15 @@
   background: $ep-primary-yellow;
   .notification-text {
     color: #fff;
+  }
+}
+
+// animations
+@keyframes easeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
