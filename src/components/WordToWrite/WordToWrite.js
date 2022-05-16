@@ -49,11 +49,13 @@ export default function WordToWrite() {
         </p>
       </div>
       <div className="wtw_input-container">
-        <div className="textarea">
-          {/* <span className="wtw_input-word"> interview </span>
-          <span className="wtw_input-word"> interview </span>
-          <span className="wtw_input-word"> interview </span>
-          <span className="wtw_input-word"> interview </span> */}
+        <div
+          className="textarea"
+          onClick={(e) => {
+            // automatically select the input
+            e.target.querySelector(".wtw_input").focus();
+          }}
+        >
           {displayedWords}
           <input
             type="text"
