@@ -3,6 +3,8 @@ import "../../dist/css/WordToWite.css";
 import useLocalStorage from "@d2k/react-localstorage";
 
 import CustomBtn from "../CustomBtn/CustomBtn";
+import Notification from "../Notification/Notification";
+import { BoyRounded } from "@mui/icons-material";
 
 export default function WordToWrite() {
   const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
@@ -80,6 +82,7 @@ export default function WordToWrite() {
           saveWords();
         }}
       />
+      <Notification message={"Changes Saved"} type="success" />
     </div>
   );
 }
