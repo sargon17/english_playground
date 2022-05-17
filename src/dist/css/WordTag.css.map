@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../components/WordTag/WordTag.scss",
+        "../../scss/variables.scss"
+    ],
+    "names": [],
+    "file": "WordTag.css"
+}
