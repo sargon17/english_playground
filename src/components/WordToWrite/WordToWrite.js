@@ -4,6 +4,7 @@ import useLocalStorage from "@d2k/react-localstorage";
 
 import CustomBtn from "../CustomBtn/CustomBtn";
 import Notification from "../Notification/Notification";
+import WordTag from "../WordTag/WordTag";
 
 export default function WordToWrite() {
   const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
@@ -35,12 +36,21 @@ export default function WordToWrite() {
     setDisplayedWords(() => [
       anotherList.map((word, index) => {
         return (
-          <span key={index} className="wtw_input-word">
-            {word}
-          </span>
+          <WordTag
+            key={index}
+            word={word}
+            onClick={(e) => removeWord(e.target.innerText)}
+          />
         );
       }),
     ]);
+  }
+
+  // function that removes word from word list and renders the remaining words
+  function removeWord(word) {
+    console.log("removeWord", word);
+    anotherList.splice(anotherList.indexOf(word), 1);
+    renderWordsToWrite();
   }
 
   function saveWords() {
@@ -67,8 +77,8 @@ export default function WordToWrite() {
       <div className="wtw_title-container">
         <h3 className="wtw_title">Words to write</h3>
         <p className="wtw_subtitle">
-          Input here the words you want to train separated by coma. Click on tag
-          to delete the word.
+          Input here the words you want to train. Click on tag to delete the
+          word.
         </p>
       </div>
       <div className="wtw_input-container">
@@ -76,7 +86,9 @@ export default function WordToWrite() {
           className="textarea"
           onClick={(e) => {
             // automatically select the input
-            e.target.querySelector(".wtw_input").focus();
+            if (e.target.querySelector(".wtw_input")) {
+              e.target.querySelector(".wtw_input").focus();
+            }
           }}
         >
           {displayedWords}

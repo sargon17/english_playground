@@ -1,1 +1,29 @@
 @import "../../scss/variables.scss";
+
+.word-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  border-radius: $ep-border-radius;
+  background: $ep-grey-normal_active;
+  cursor: pointer;
+  transition: $ep-transition;
+
+  span {
+    font-size: $ep-font-size-xs;
+    font-weight: $ep-font-weight-bold;
+    color: $ep-grey-light_hover;
+    text-align: center;
+    line-height: 11.78px;
+  }
+
+  &:hover {
+    background: $ep-grey-normal_hover;
+  }
+  &:active {
+    background: $ep-grey-normal_active;
+    transform: scale(0.98);
+    transition: none;
+  }
+}
