@@ -6,6 +6,8 @@ import CustomBtn from "../CustomBtn/CustomBtn";
 import Notification from "../Notification/Notification";
 import WordTag from "../WordTag/WordTag";
 
+import compareArrays from "../../utlities/compareArrays";
+
 export default function WordToWrite() {
   const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
     "wordsToWrite",
@@ -48,28 +50,38 @@ export default function WordToWrite() {
 
   // function that removes word from word list and renders the remaining words
   function removeWord(word) {
-    console.log("removeWord", word);
+    // console.log("removeWord", word);
     anotherList.splice(anotherList.indexOf(word), 1);
+    console.log("anotherList", anotherList);
     renderWordsToWrite();
   }
 
   function saveWords() {
     setWordsToWrite([...anotherList]);
-    displayNotification("Saved Correctly", "success", "center");
+    checkSaveWords();
   }
 
-  function displayNotification(message, type, position) {
+  // function checks if words are saved or not and displays notification accordingly
+  function checkSaveWords() {
+    if (compareArrays(wordsToWrite, anotherList)) {
+      displayNotification("Saved Correctly", "success", "center", 1000);
+    } else {
+      displayNotification("Error Saving", "error", "center", 1000);
+    }
+  }
+
+  function displayNotification(message, type, position, duration) {
     setNotification({
       message: message,
       type: type,
       position: position,
-      duration: 3000,
+      duration: duration,
     });
     setIsNotification(true);
 
     setTimeout(() => {
       setIsNotification(false);
-    }, 3500);
+    }, duration + 500);
   }
 
   return (
