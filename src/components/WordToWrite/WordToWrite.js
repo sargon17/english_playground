@@ -4,7 +4,6 @@ import useLocalStorage from "@d2k/react-localstorage";
 
 import CustomBtn from "../CustomBtn/CustomBtn";
 import Notification from "../Notification/Notification";
-import { BoyRounded } from "@mui/icons-material";
 
 export default function WordToWrite() {
   const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
@@ -46,11 +45,10 @@ export default function WordToWrite() {
 
   function saveWords() {
     setWordsToWrite([...anotherList]);
-    displayNotification("Saved Correctly", "success", "bottom");
+    displayNotification("Saved Correctly", "success", "center");
   }
 
   function displayNotification(message, type, position) {
-    // Notification(message, type, position);
     setNotification({
       message: message,
       type: type,
