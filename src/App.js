@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import { Paper } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import classicTheme from "./Themes/ClassicTheme";

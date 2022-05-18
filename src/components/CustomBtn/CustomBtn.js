@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import React, { useState } from "react";
 import "../../dist/css/CustomBtn.css";
 
 export default function CustomBtn({ onClick, content, variant }) {
@@ -11,10 +11,8 @@ export default function CustomBtn({ onClick, content, variant }) {
   //   }
 
   return (
-    <>
-      <button className={btnClasses.join(" ")} onClick={onClick}>
-        {content}
-      </button>
-    </>
+    <button className={btnClasses.join(" ")} onClick={onClick}>
+      {content}
+    </button>
   );
 }

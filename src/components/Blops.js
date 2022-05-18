@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 // import blopGreenLg from "../assets/green-blops/blop-green-lg.svg";
 // import blopGreenMd from "../assets/green-blops/blop-green-md.svg";
 // import blopGreenSm from "../assets/green-blops/blop-green-sm.svg";
