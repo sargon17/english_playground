@@ -13,4 +13,11 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
+
+@media screen and (max-width: 768px) {
+  .blops__container .blop__container {
+    -webkit-transform: translate(-50%, -50%) scale(0.5);
+            transform: translate(-50%, -50%) scale(0.5);
+  }
+}
 /*# sourceMappingURL=blops.css.map */
