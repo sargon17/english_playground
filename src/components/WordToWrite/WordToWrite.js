@@ -111,7 +111,9 @@ export default function WordToWrite() {
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 // setWordsList([...wordsList, e.target.value]);
-                anotherList.push(e.target.value.toLowerCase().trim());
+                if (e.target.value !== "") {
+                  anotherList.push(e.target.value.toLowerCase().trim());
+                }
                 // console.log(wordsList);
                 renderWordsToWrite();
                 e.target.value = "";
