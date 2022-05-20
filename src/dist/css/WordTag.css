@@ -5,27 +5,33 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 0.1rem;
   padding: 2px 8px;
   border-radius: 11px;
   background: #323232;
   cursor: pointer;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  vertical-align: auto;
 }
 
 .word-tag span {
   font-size: 0.718rem;
   font-weight: 700;
   color: #9b9b9b;
-  text-align: center;
-  line-height: 11.78px;
+  line-height: 12.78px;
 }
 
 .word-tag:hover {
   background: #3b3b3b;
+}
+
+.word-tag:hover .cancel-icon {
+  color: #9b9b9b;
+  width: 12px;
 }
 
 .word-tag:active {
@@ -34,5 +40,21 @@
           transform: scale(0.98);
   -webkit-transition: none;
   transition: none;
+}
+
+.word-tag .cancel-icon {
+  width: 0;
+  color: #9b9b9b;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  margin: 0;
+  padding: 0;
+  max-height: 12px;
+}
+
+.word-tag .cancel-icon:hover {
+  -webkit-transition: color 0.1s ease-in-out;
+  transition: color 0.1s ease-in-out;
+  color: #ef6f6c;
 }
 /*# sourceMappingURL=WordTag.css.map */

@@ -3,27 +3,47 @@
 .word-tag {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 0.1rem;
   padding: 2px 8px;
   border-radius: $ep-border-radius;
   background: $ep-grey-normal_active;
   cursor: pointer;
   transition: $ep-transition;
+  vertical-align: auto;
 
   span {
     font-size: $ep-font-size-xs;
     font-weight: $ep-font-weight-bold;
     color: $ep-grey-light_hover;
-    text-align: center;
-    line-height: 11.78px;
+    line-height: 12.78px;
   }
 
   &:hover {
     background: $ep-grey-normal_hover;
+
+    & .cancel-icon {
+      color: $ep-grey-light_hover;
+
+      width: 12px;
+    }
   }
   &:active {
     background: $ep-grey-normal_active;
     transform: scale(0.98);
     transition: none;
+  }
+  .cancel-icon {
+    width: 0;
+    color: $ep-grey-light_hover;
+    transition: $ep-transition;
+    margin: 0;
+    padding: 0;
+    max-height: 12px;
+
+    &:hover {
+      transition: color 0.1s ease-in-out;
+      color: $ep-primary-red;
+    }
   }
 }
