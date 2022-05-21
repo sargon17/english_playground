@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import "../../dist/css/WordToWite.css";
 import useLocalStorage from "@d2k/react-localstorage";
 
@@ -11,9 +11,7 @@ import compareArrays from "../../utlities/compareArrays";
 // redux store
 import { useSelector, useDispatch } from "react-redux";
 import {
-  // setWordsToWriteRedux,
-  addWordsToWriteRedux,
-  // removeWordsToWriteRedux,
+  setWordsToWriteRedux,
   selectWordsToWrite,
 } from "../../features/gameData/gameDataSlice";
 
@@ -22,12 +20,11 @@ export default function WordToWrite() {
     "wordsToWrite",
     ["interview", "house", "car"]
   );
+
   const wtw = useSelector(selectWordsToWrite);
   const dispatch = useDispatch();
-  //   let [wordsList, setWordsList] = useState([]);
-  let [displayedWords, setDisplayedWords] = useState(wtw);
-  let anotherList = [...wtw];
-  console.log("anotherList", anotherList);
+  let [displayedWords, setDisplayedWords] = useState([]);
+  let anotherList;
   let [isNotification, setIsNotification] = useState(false);
   let [notification, setNotification] = useState({
     message: "",
@@ -36,14 +33,12 @@ export default function WordToWrite() {
     duration: "",
   });
 
+  anotherList = useMemo(() => {
+    return [...wtw];
+  }, [wtw]);
+
   useEffect(() => {
-    console.log("useEffect", wtw);
-    if (wordsToWrite !== undefined) {
-      //   setWordsList(() => wordsToWrite);
-      // anotherList = [...wtw];
-      //   console.log("hello i'am useEffect", wordsList);
-      renderWordsToWrite();
-    }
+    renderWordsToWrite();
   }, []);
 
   function renderWordsToWrite() {
@@ -62,17 +57,14 @@ export default function WordToWrite() {
 
   // function that removes word from word list and renders the remaining words
   function removeWord(word) {
-    // console.log("removeWord", word);
-    anotherList.splice(anotherList.indexOf(word), 1);
-    console.log("anotherList", anotherList);
+    anotherList = anotherList.filter((item) => item !== word);
     renderWordsToWrite();
-    // dispatch(setWordsToWriteRedux(anotherList));
+    saveWords();
   }
 
   function saveWords() {
+    dispatch(setWordsToWriteRedux(anotherList));
     setWordsToWrite([...anotherList]);
-    checkSaveWords();
-    // dispatch(setWordsToWriteRedux(anotherList));
   }
 
   // function checks if words are saved or not and displays notification accordingly
@@ -124,16 +116,12 @@ export default function WordToWrite() {
             placeholder="Write here..."
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                // setWordsList([...wordsList, e.target.value]);
                 if (e.target.value !== "") {
-                  // anotherList.push(e.target.value.toLowerCase().trim());
-                  // anotherList = [
-                  //   ...anotherList,
-                  //   e.target.value.toLowerCase().trim(),
-                  // ];
-                  dispatch(
-                    addWordsToWriteRedux(e.target.value.toLowerCase().trim())
-                  );
+                  anotherList = [
+                    ...anotherList,
+                    e.target.value.toLowerCase().trim(),
+                  ];
+                  saveWords();
                 }
                 // console.log(wordsList);
                 renderWordsToWrite();
@@ -148,6 +136,7 @@ export default function WordToWrite() {
         variant="primary"
         onClick={() => {
           saveWords();
+          checkSaveWords();
         }}
       />
 

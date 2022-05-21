@@ -51,10 +51,6 @@ export default function Main() {
         const response = await wordsToWrite;
         if (response !== undefined) {
           dispatch(setWordsToWriteRedux([...wordsToWrite]));
-        } else {
-          setTimeout(() => {
-            download();
-          }, 1000);
         }
         console.log("response", response);
 

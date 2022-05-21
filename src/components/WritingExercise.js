@@ -47,7 +47,7 @@ export default function WritingExercise({ close, mousePosition }) {
   let [totalRepeats, setTotalRepeats] = useState(20);
   // let words = wordsData;
   // let words = wordsToWrite ? wordsToWrite : [];
-  let [words, setWords] = useState([]);
+  let [words, setWords] = useState(wtw ? wtw : []);
   let theWord = setTheWord();
   let [currentWord, setCurrentWord] = useState(theWord);
   let [isWtwOpen, setIsWtwOpen] = useState(false);
@@ -71,11 +71,17 @@ export default function WritingExercise({ close, mousePosition }) {
   }
 
   useEffect(() => {
-    setWords(wtw);
-    console.log("wtw", wtw);
-    theWord = setTheWord();
-    setCurrentWord(theWord);
-  }, [wtw]);
+    if (!wtw.includes(currentWord)) {
+      try {
+        setWords(wtw);
+        theWord = setTheWord();
+        setCurrentWord(theWord);
+        // selectTheWord();
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+  }, [!isWtwOpen]);
 
   // console.log(words);
 
