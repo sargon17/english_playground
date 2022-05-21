@@ -3,15 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 export const gameDataSlice = createSlice({
   name: "gameData",
   initialState: {
-    wordsToWrite: [],
+    value: 0,
   },
   reducers: {
-    setWordsToWrite: (state, action) => {
-      state.wordsToWrite = action.payload;
+    setWordsToWriteRedux: (state, action) => {
+      state.value = action.payload;
     },
   },
 });
 
-export const { setWordsToWrite } = gameDataSlice.actions;
+export const { setWordsToWriteRedux } = gameDataSlice.actions;
+// export const selectWordsToWrite = (state) => state.gameData.value;
 
 export default gameDataSlice.reducer;

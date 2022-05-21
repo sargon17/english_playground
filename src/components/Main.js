@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import MenuCard from "./MenuCard";
 import { Container } from "@mui/material";
@@ -6,7 +6,13 @@ import WritingExercise from "./WritingExercise";
 import Header from "./Header/Header";
 import useLocalStorage from "@d2k/react-localstorage";
 
-export default function Main({ mousePosition }) {
+import { useSelector, useDispatch } from "react-redux";
+import { setWordsToWriteRedux } from "../features/gameData/gameDataSlice";
+
+export default function Main() {
+  const wtw = useSelector((state) => state.value);
+  const dispatch = useDispatch();
+
   const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
     "wordsToWrite",
     ["interview", "house", "car"]
@@ -24,6 +30,32 @@ export default function Main({ mousePosition }) {
 
   let isAnyGameActive = games.some((game) => game.isActive);
   let activeGame = games.find((game) => game.isActive);
+
+  useEffect(() => {
+    downloadData();
+  }, [wordsToWrite]);
+
+  // console.log("wordsToWrite", wordsToWrite);
+  // console.log("wtw", wtw);
+
+  function downloadData() {
+    console.log("downloadData");
+
+    download();
+
+    async function download() {
+      try {
+        const response = await wordsToWrite;
+        if (response !== undefined) {
+          dispatch(setWordsToWriteRedux(response));
+        }
+        console.log("response", response);
+        console.log("redux", wtw);
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+  }
 
   function handleClick(game) {
     setGames(
@@ -68,11 +100,7 @@ export default function Main({ mousePosition }) {
     return games.map((game, index) => {
       return (
         games[index].isActive && (
-          <game.component
-            key={game.id}
-            close={closeAllGames}
-            mousePosition={mousePosition}
-          />
+          <game.component key={game.id} close={closeAllGames} />
         )
       );
     });
