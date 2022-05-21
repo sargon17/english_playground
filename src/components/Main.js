@@ -7,10 +7,13 @@ import Header from "./Header/Header";
 import useLocalStorage from "@d2k/react-localstorage";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setWordsToWriteRedux } from "../features/gameData/gameDataSlice";
+import {
+  setWordsToWriteRedux,
+  selectWordsToWrite,
+} from "../features/gameData/gameDataSlice";
 
 export default function Main() {
-  const wtw = useSelector((state) => state.value);
+  const wtw = useSelector(selectWordsToWrite);
   const dispatch = useDispatch();
 
   const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
@@ -47,9 +50,14 @@ export default function Main() {
       try {
         const response = await wordsToWrite;
         if (response !== undefined) {
-          dispatch(setWordsToWriteRedux(response));
+          dispatch(setWordsToWriteRedux([...wordsToWrite]));
+        } else {
+          setTimeout(() => {
+            download();
+          }, 1000);
         }
         console.log("response", response);
+
         console.log("redux", wtw);
       } catch (error) {
         console.log("error", error);

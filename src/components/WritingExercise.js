@@ -26,11 +26,20 @@ import blopRedLg from "./../assets/red-blops/blop-red-lg.svg";
 import blopRedMd from "./../assets/red-blops/blop-red-md.svg";
 import blopRedSm from "./../assets/red-blops/blop-red-sm.svg";
 
+// Redux
+import { useSelector, useDispatch } from "react-redux";
+import {
+  // setWordsToWriteRedux,
+  selectWordsToWrite,
+} from "../features/gameData/gameDataSlice";
+
 export default function WritingExercise({ close, mousePosition }) {
-  const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
-    "wordsToWrite",
-    []
-  );
+  // const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
+  //   "wordsToWrite",
+  //   []
+  // );
+
+  const wtw = useSelector(selectWordsToWrite);
 
   // console.log(wordsToWrite);
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
@@ -62,14 +71,11 @@ export default function WritingExercise({ close, mousePosition }) {
   }
 
   useEffect(() => {
-    if (wordsToWrite !== undefined) {
-      setWords(wordsToWrite);
-      theWord = setTheWord();
-    }
-  }, [wordsToWrite]);
-  useEffect(() => {
+    setWords(wtw);
+    console.log("wtw", wtw);
+    theWord = setTheWord();
     setCurrentWord(theWord);
-  }, [words]);
+  }, [wtw]);
 
   // console.log(words);
 

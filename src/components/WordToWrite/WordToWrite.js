@@ -8,14 +8,26 @@ import WordTag from "../WordTag/WordTag";
 
 import compareArrays from "../../utlities/compareArrays";
 
+// redux store
+import { useSelector, useDispatch } from "react-redux";
+import {
+  // setWordsToWriteRedux,
+  addWordsToWriteRedux,
+  // removeWordsToWriteRedux,
+  selectWordsToWrite,
+} from "../../features/gameData/gameDataSlice";
+
 export default function WordToWrite() {
   const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
     "wordsToWrite",
     ["interview", "house", "car"]
   );
+  const wtw = useSelector(selectWordsToWrite);
+  const dispatch = useDispatch();
   //   let [wordsList, setWordsList] = useState([]);
-  let [displayedWords, setDisplayedWords] = useState([]);
-  let anotherList = wordsToWrite;
+  let [displayedWords, setDisplayedWords] = useState(wtw);
+  let anotherList = [...wtw];
+  console.log("anotherList", anotherList);
   let [isNotification, setIsNotification] = useState(false);
   let [notification, setNotification] = useState({
     message: "",
@@ -25,14 +37,14 @@ export default function WordToWrite() {
   });
 
   useEffect(() => {
-    console.log("useEffect", wordsToWrite);
+    console.log("useEffect", wtw);
     if (wordsToWrite !== undefined) {
       //   setWordsList(() => wordsToWrite);
-      anotherList = wordsToWrite;
+      // anotherList = [...wtw];
       //   console.log("hello i'am useEffect", wordsList);
       renderWordsToWrite();
     }
-  }, [wordsToWrite]);
+  }, []);
 
   function renderWordsToWrite() {
     setDisplayedWords(() => [
@@ -54,11 +66,13 @@ export default function WordToWrite() {
     anotherList.splice(anotherList.indexOf(word), 1);
     console.log("anotherList", anotherList);
     renderWordsToWrite();
+    // dispatch(setWordsToWriteRedux(anotherList));
   }
 
   function saveWords() {
     setWordsToWrite([...anotherList]);
     checkSaveWords();
+    // dispatch(setWordsToWriteRedux(anotherList));
   }
 
   // function checks if words are saved or not and displays notification accordingly
@@ -112,7 +126,14 @@ export default function WordToWrite() {
               if (e.key === "Enter") {
                 // setWordsList([...wordsList, e.target.value]);
                 if (e.target.value !== "") {
-                  anotherList.push(e.target.value.toLowerCase().trim());
+                  // anotherList.push(e.target.value.toLowerCase().trim());
+                  // anotherList = [
+                  //   ...anotherList,
+                  //   e.target.value.toLowerCase().trim(),
+                  // ];
+                  dispatch(
+                    addWordsToWriteRedux(e.target.value.toLowerCase().trim())
+                  );
                 }
                 // console.log(wordsList);
                 renderWordsToWrite();
