@@ -69,7 +69,8 @@ export default function WordToWrite() {
 
   // function checks if words are saved or not and displays notification accordingly
   function checkSaveWords() {
-    if (compareArrays(wordsToWrite, anotherList)) {
+    // console.log("checkSaveWords", wtw, anotherList);
+    if (compareArrays(wtw, anotherList)) {
       displayNotification("Saved Correctly", "success", "center", 1000);
     } else {
       displayNotification("Error Saving", "error", "center", 1000);
