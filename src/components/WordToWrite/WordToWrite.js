@@ -117,7 +117,10 @@ export default function WordToWrite() {
             placeholder="Write here..."
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                if (e.target.value !== "") {
+                if (
+                  e.target.value !== "" &&
+                  !anotherList.includes(e.target.value)
+                ) {
                   anotherList = [
                     ...anotherList,
                     e.target.value.toLowerCase().trim(),
