@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import "../../dist/css/WordToWite.css";
 import useLocalStorage from "@d2k/react-localstorage";
 
@@ -32,6 +32,7 @@ export default function WordToWrite() {
     position: "",
     duration: "",
   });
+  let input = useRef(null);
 
   anotherList = useMemo(() => {
     return [...wtw];
@@ -91,6 +92,19 @@ export default function WordToWrite() {
     }, duration + 500);
   }
 
+  function createTag() {
+    console.log("createTag", input.current.value);
+    if (
+      input.current.value !== "" &&
+      !anotherList.includes(input.current.value)
+    ) {
+      anotherList = [...anotherList, input.current.value.toLowerCase().trim()];
+      saveWords();
+    }
+    input.current.value = "";
+    renderWordsToWrite();
+  }
+
   return (
     <div className="wtw_container">
       <div className="wtw_title-container">
@@ -115,21 +129,21 @@ export default function WordToWrite() {
             type="text"
             className="wtw_input"
             placeholder="Write here..."
+            ref={input}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                if (
-                  e.target.value !== "" &&
-                  !anotherList.includes(e.target.value)
-                ) {
-                  anotherList = [
-                    ...anotherList,
-                    e.target.value.toLowerCase().trim(),
-                  ];
-                  saveWords();
-                }
+                // if (
+                //   e.target.value !== "" &&
+                //   !anotherList.includes(e.target.value)
+                // ) {
+                //   anotherList = [
+                //     ...anotherList,
+                //     e.target.value.toLowerCase().trim(),
+                //   ];
+                //   saveWords();
+                // }
                 // console.log(wordsList);
-                renderWordsToWrite();
-                e.target.value = "";
+                createTag();
               }
             }}
           />
@@ -139,8 +153,9 @@ export default function WordToWrite() {
         content="Save"
         variant="primary"
         onClick={() => {
-          saveWords();
-          checkSaveWords();
+          createTag();
+          // saveWords();
+          // checkSaveWords();
         }}
       />
 
