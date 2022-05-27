@@ -132,17 +132,6 @@ export default function WordToWrite() {
             ref={input}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                // if (
-                //   e.target.value !== "" &&
-                //   !anotherList.includes(e.target.value)
-                // ) {
-                //   anotherList = [
-                //     ...anotherList,
-                //     e.target.value.toLowerCase().trim(),
-                //   ];
-                //   saveWords();
-                // }
-                // console.log(wordsList);
                 createTag();
               }
             }}
