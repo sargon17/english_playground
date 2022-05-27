@@ -54,7 +54,7 @@ export default function WritingExercise({ close, mousePosition }) {
   let [isWtwOpen, setIsWtwOpen] = useState(false);
 
   // this element is an object to find the word => inputedWord.target.value
-  let [inputedWord, setInputedWord] = useState({});
+  let [inputedWord, setInputedWord] = useState("");
 
   // conditioned styles
   let addIconStyle = {};
@@ -104,6 +104,11 @@ export default function WritingExercise({ close, mousePosition }) {
   }
 
   function checkWord() {
+    if (inputedWord === "") {
+      addPoints(false);
+      setTotalRepeats(totalRepeats + 2);
+      return;
+    }
     let word = inputedWord.target.value;
     word = word.toLowerCase().trim();
     if (word === currentWord) {
@@ -375,7 +380,7 @@ export default function WritingExercise({ close, mousePosition }) {
                 />
                 <Box
                   sx={{
-                    width: "30%",
+                    width: "150px",
                     margin: "auto",
                     marginTop: "20px",
                     display: "none",
@@ -384,7 +389,11 @@ export default function WritingExercise({ close, mousePosition }) {
                     },
                   }}
                 >
-                  <CustomBtn onClick={() => checkWord()} content={"Submit"} />
+                  <CustomBtn
+                    onClick={() => checkWord()}
+                    content={"Submit"}
+                    variant={"clear"}
+                  />
                 </Box>
               </Box>
             </Box>
