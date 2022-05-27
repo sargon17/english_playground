@@ -22,4 +22,18 @@
     color: $ep-grey-light_active;
     background-color: $ep-grey-dark_active;
   }
+  &-clear {
+    background-color: $ep-grey-normal_hover;
+
+    &:hover {
+      color: $ep-grey-light_hover;
+      background-color: $ep-grey-dark_hover;
+    }
+
+    &:active {
+      transition: all 3ms ease-in-out;
+      color: $ep-grey-light_active;
+      background-color: $ep-grey-dark_active;
+    }
+  }
 }
