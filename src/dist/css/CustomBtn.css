@@ -23,4 +23,20 @@
   color: #868686;
   background-color: #080808;
 }
+
+.custom-btn-clear {
+  background-color: #3b3b3b;
+}
+
+.custom-btn-clear:hover {
+  color: #9b9b9b;
+  background-color: #111111;
+}
+
+.custom-btn-clear:active {
+  -webkit-transition: all 3ms ease-in-out;
+  transition: all 3ms ease-in-out;
+  color: #868686;
+  background-color: #080808;
+}
 /*# sourceMappingURL=CustomBtn.css.map */

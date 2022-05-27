@@ -14,6 +14,13 @@
           transform: translate(-50%, -50%);
 }
 
+@media screen and (max-width: 768px) {
+  .blops__container .blop__container {
+    -webkit-transform: translate(-50%, -50%) scale(0.5);
+            transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
