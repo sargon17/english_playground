@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box } from "@mui/system";
+import { Box, display, margin } from "@mui/system";
 import { capitalize, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import check from "./../assets/check-circle-fill.svg";
@@ -360,7 +360,7 @@ export default function WritingExercise({ close, mousePosition }) {
               <Box
                 sx={{
                   width: "60%",
-                  margin: "100px auto",
+                  margin: "5vh auto",
                   "@media (max-width: 600px)": {
                     width: "98%",
                   },
@@ -373,7 +373,19 @@ export default function WritingExercise({ close, mousePosition }) {
                   currentWord={currentWord}
                   writenWord={inputedWord}
                 />
-                <CustomBtn onClick={() => checkWord()} content={"Submit"} />
+                <Box
+                  sx={{
+                    width: "30%",
+                    margin: "auto",
+                    marginTop: "20px",
+                    display: "none",
+                    "@media (max-width: 768px)": {
+                      display: "block",
+                    },
+                  }}
+                >
+                  <CustomBtn onClick={() => checkWord()} content={"Submit"} />
+                </Box>
               </Box>
             </Box>
           </Box>
