@@ -21,6 +21,7 @@ import Blops from "./Blops";
 import ProgressCounter from "./ProgressCounter/ProgressCounter";
 import CustomInput from "./CustomInput/CustomInput";
 import WordToWrite from "./WordToWrite/WordToWrite";
+import CustomBtn from "./CustomBtn/CustomBtn";
 
 import blopRedLg from "./../assets/red-blops/blop-red-lg.svg";
 import blopRedMd from "./../assets/red-blops/blop-red-md.svg";
@@ -51,6 +52,9 @@ export default function WritingExercise({ close, mousePosition }) {
   let theWord = setTheWord();
   let [currentWord, setCurrentWord] = useState(theWord);
   let [isWtwOpen, setIsWtwOpen] = useState(false);
+
+  // this element is an object to find the word => inputedWord.target.value
+  let [inputedWord, setInputedWord] = useState({});
 
   // conditioned styles
   let addIconStyle = {};
@@ -99,9 +103,8 @@ export default function WritingExercise({ close, mousePosition }) {
     return words[randomNumber];
   }
 
-  function checkWord(element) {
-    // console.log("element =>", element);
-    let word = element.target.value;
+  function checkWord() {
+    let word = inputedWord.target.value;
     word = word.toLowerCase().trim();
     if (word === currentWord) {
       setCorrectAnswersNumber(correctAnswersNumber + 1);
@@ -111,7 +114,12 @@ export default function WritingExercise({ close, mousePosition }) {
       addPoints(false);
       setTotalRepeats(totalRepeats + 2);
     }
-    cleanInput(element);
+    cleanInput(inputedWord);
+  }
+
+  // function that set the inputedWirds value
+  function handleWriting(element) {
+    setInputedWord(element);
   }
 
   function checkCorrectsTimes() {
@@ -358,7 +366,14 @@ export default function WritingExercise({ close, mousePosition }) {
                   },
                 }}
               >
-                <CustomInput onClick={checkWord} currentWord={currentWord} />
+                <CustomInput
+                  //onClick={{ handleWriting, checkWord }}
+                  handleWriting={handleWriting}
+                  checkWord={checkWord}
+                  currentWord={currentWord}
+                  writenWord={inputedWord}
+                />
+                <CustomBtn onClick={() => checkWord()} content={"Submit"} />
               </Box>
             </Box>
           </Box>
