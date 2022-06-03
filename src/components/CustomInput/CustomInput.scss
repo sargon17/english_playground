@@ -49,6 +49,15 @@
     animation: exitColorIncorrect 0.5s ease-in-out;
   }
 }
+:disabled {
+  background-color: $ep-grey-dark_darker;
+  color: $ep-grey-light_active;
+  cursor: not-allowed;
+
+  :hover {
+    background-color: $ep-grey-dark_darker;
+  }
+}
 
 // ANUMATION
 @keyframes exitColorCorrect {
