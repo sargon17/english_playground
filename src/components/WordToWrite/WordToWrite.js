@@ -140,7 +140,7 @@ export default function WordToWrite() {
       </div>
       <CustomBtn
         content="Save"
-        variant="primary"
+        // variant="primary"
         onClick={() => {
           createTag();
           checkSaveWords();
