@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../dist/css/CustomInput.css";
 
 export default function CustomInput({
@@ -8,6 +8,7 @@ export default function CustomInput({
   isDisabled,
 }) {
   let [inputClasses, setInputClasses] = useState(["custom-input"]);
+  let [inputPlaceholder, setInputPlaceholder] = useState("Write here...");
 
   // Function that displays the result of the user's input changing the color of the input
   function displayStatus(e) {
@@ -24,12 +25,20 @@ export default function CustomInput({
     // ! if the duration of the animaton change, need to change the timeout too
   }
 
+  useEffect(() => {
+    if (isDisabled) {
+      setInputPlaceholder(isDisabled);
+    } else {
+      setInputPlaceholder("Write here...");
+    }
+  }, [isDisabled]);
+
   return (
     <>
       <input
         type="text"
         className={inputClasses.join(" ")}
-        placeholder="Input here"
+        placeholder={inputPlaceholder}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             displayStatus(e);
@@ -40,7 +49,7 @@ export default function CustomInput({
         onChange={(e) => {
           handleWriting(e);
         }}
-        disabled={isDisabled}
+        disabled={isDisabled.length ? true : false}
       />
     </>
   );
