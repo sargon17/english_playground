@@ -45,7 +45,8 @@ export default function WritingExercise({ close, mousePosition }) {
   // console.log(wordsToWrite);
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
   let [resultArray, setResultArray] = useState([]);
-  let [totalRepeats, setTotalRepeats] = useState(2);
+  const repeatNumber = 2;
+  let [totalRepeats, setTotalRepeats] = useState(repeatNumber);
   // let words = wordsData;
   // let words = wordsToWrite ? wordsToWrite : [];
   let [words, setWords] = useState(wtw ? wtw : []);
@@ -143,7 +144,7 @@ export default function WritingExercise({ close, mousePosition }) {
   function endGame() {
     setResultArray([]);
     setCorrectAnswersNumber(0);
-    setTotalRepeats(20);
+    setTotalRepeats(repeatNumber);
     selectTheWord();
   }
 
