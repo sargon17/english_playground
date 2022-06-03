@@ -45,7 +45,7 @@ export default function WritingExercise({ close, mousePosition }) {
   // console.log(wordsToWrite);
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
   let [resultArray, setResultArray] = useState([]);
-  let [totalRepeats, setTotalRepeats] = useState(20);
+  let [totalRepeats, setTotalRepeats] = useState(2);
   // let words = wordsData;
   // let words = wordsToWrite ? wordsToWrite : [];
   let [words, setWords] = useState(wtw ? wtw : []);
@@ -90,12 +90,17 @@ export default function WritingExercise({ close, mousePosition }) {
   // console.log(words);
 
   function selectTheWord() {
-    // console.log("word =>", currentWord);
-    // console.log("words before =>", words);
-    words.splice(words.indexOf(currentWord), 1);
-    // console.log("words after =>", words);
+    console.log("word =>", currentWord);
+    console.log("words before =>", words);
+    let newWords = removeItemFromArray(words, currentWord);
+    setWords(newWords);
+    console.log("words after =>", words);
     let randomNumber = Math.floor(Math.random() * words.length);
     setCurrentWord(() => words[randomNumber]);
+  }
+
+  function removeItemFromArray(array, item) {
+    return array.filter((i) => i !== item);
   }
 
   function setTheWord() {
