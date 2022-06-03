@@ -107,6 +107,10 @@ export default function WritingExercise({ close, mousePosition }) {
   }
 
   function checkWord() {
+    //check if the word is assigned
+    if (!currentWord) {
+      return;
+    }
     if (inputedWord === "") {
       addPoints(false);
       setTotalRepeats(totalRepeats + 2);
@@ -387,6 +391,7 @@ export default function WritingExercise({ close, mousePosition }) {
                   checkWord={checkWord}
                   currentWord={currentWord}
                   writenWord={inputedWord}
+                  isDisabled={!words.length ? true : false}
                 />
                 <Grid
                   container
