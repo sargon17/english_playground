@@ -343,9 +343,7 @@ export default function WritingExercise({ close, mousePosition }) {
                     color={"grey.lighter"}
                     textAlign={"center"}
                   >
-                    {capitalize(
-                      currentWord ? currentWord : "game end, add new words"
-                    )}
+                    {capitalize(currentWord ? currentWord : "game over")}
                   </Typography>
                   {/* / Current Word */}
                   {/* / Current Word Block */}
@@ -391,7 +389,7 @@ export default function WritingExercise({ close, mousePosition }) {
                   checkWord={checkWord}
                   currentWord={currentWord}
                   writenWord={inputedWord}
-                  isDisabled={!words.length ? true : false}
+                  isDisabled={!words.length ? "add new words or restart" : ""}
                 />
                 <Grid
                   container
@@ -424,7 +422,7 @@ export default function WritingExercise({ close, mousePosition }) {
                     <Grid item xs={12} sm={6} md={3}>
                       <CustomBtn
                         content={"Restart"}
-                        variant={"clear"}
+                        variant={"primary"}
                         onClick={() => restartGame()}
                       />
                     </Grid>
