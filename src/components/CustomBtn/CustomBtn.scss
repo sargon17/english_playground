@@ -21,6 +21,7 @@
     transition: all 3ms ease-in-out;
     color: $ep-grey-light_active;
     background-color: $ep-grey-dark_active;
+    transform: scaleX(0.98);
   }
   &-clear {
     background-color: $ep-grey-normal_hover;
@@ -34,6 +35,21 @@
       transition: all 3ms ease-in-out;
       color: $ep-grey-light_active;
       background-color: $ep-grey-dark_active;
+    }
+  }
+  &-primary {
+    background-color: $ep-primary-green;
+    color: $ep-grey-normal_active;
+
+    &:hover {
+      color: $ep-grey-dark;
+      background-color: $ep-primary-green_hover;
+    }
+
+    &:active {
+      transition: all 3ms ease-in-out;
+      color: $ep-grey-dark_darker;
+      background-color: $ep-primary-green_active;
     }
   }
 }
