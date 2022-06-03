@@ -45,7 +45,7 @@ export default function WritingExercise({ close, mousePosition }) {
   // console.log(wordsToWrite);
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
   let [resultArray, setResultArray] = useState([]);
-  const repeatNumber = 2;
+  const repeatNumber = 12;
   let [totalRepeats, setTotalRepeats] = useState(repeatNumber);
   // let words = wordsData;
   // let words = wordsToWrite ? wordsToWrite : [];
@@ -75,6 +75,7 @@ export default function WritingExercise({ close, mousePosition }) {
     };
   }
 
+  // change the word to write dinamicly when the user close the words to write settings
   useEffect(() => {
     if (!wtw.includes(currentWord)) {
       try {
@@ -85,7 +86,7 @@ export default function WritingExercise({ close, mousePosition }) {
         console.log("error", error);
       }
     }
-  }, [!isWtwOpen]);
+  }, [isWtwOpen]);
 
   // console.log(words);
 
@@ -339,7 +340,9 @@ export default function WritingExercise({ close, mousePosition }) {
                     color={"grey.lighter"}
                     textAlign={"center"}
                   >
-                    {capitalize(currentWord ? currentWord : "end")}
+                    {capitalize(
+                      currentWord ? currentWord : "game end, add new words"
+                    )}
                   </Typography>
                   {/* / Current Word */}
                   {/* / Current Word Block */}
