@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "../../dist/css/CustomInput.css";
 
-export default function CustomInput({ handleWriting, checkWord, currentWord }) {
+export default function CustomInput({
+  handleWriting,
+  checkWord,
+  currentWord,
+  isDisabled,
+}) {
   let [inputClasses, setInputClasses] = useState(["custom-input"]);
 
   // Function that displays the result of the user's input changing the color of the input
@@ -35,6 +40,7 @@ export default function CustomInput({ handleWriting, checkWord, currentWord }) {
         onChange={(e) => {
           handleWriting(e);
         }}
+        disabled={isDisabled}
       />
     </>
   );
