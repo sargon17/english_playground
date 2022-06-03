@@ -7,6 +7,7 @@ import xCircle from "./../assets/x-circle-fill.svg";
 import wordsData from "./../data/writingEx_data.json";
 import { IconButton } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { Grid } from "@mui/material";
 
 import useLocalStorage from "@d2k/react-localstorage";
 
@@ -88,25 +89,18 @@ export default function WritingExercise({ close, mousePosition }) {
     }
   }, [isWtwOpen]);
 
-  // console.log(words);
-
   function updateWordsList() {
     setWords((prevWords) => {
       return prevWords.filter((word) => word !== currentWord);
     });
-    // console.log("words after =>", words);
   }
 
   // on change of words list it will update the current word
   useEffect(() => {
-    console.log("words =>", words);
     setCurrentWord(setTheWord());
   }, [words]);
 
-  function removeItemFromArray(array, item) {
-    return array.splice(array.indexOf(item), 1);
-  }
-
+  // function to set the word to write
   function setTheWord() {
     let randomNumber = Math.floor(Math.random() * words.length);
     return words[randomNumber];
@@ -138,8 +132,6 @@ export default function WritingExercise({ close, mousePosition }) {
 
   function checkCorrectsTimes() {
     if (correctAnswersNumber + 1 >= totalRepeats) {
-      // console.log("correctAnswersNumber", correctAnswersNumber);
-      // console.log("totalRepeats", totalRepeats);
       endGame();
     }
   }
@@ -161,6 +153,13 @@ export default function WritingExercise({ close, mousePosition }) {
 
   function cleanInput(element) {
     element.target.value = "";
+  }
+
+  function restartGame() {
+    setResultArray([]);
+    setCorrectAnswersNumber(0);
+    setTotalRepeats(repeatNumber);
+    setWords(wtw);
   }
 
   return (
@@ -389,23 +388,43 @@ export default function WritingExercise({ close, mousePosition }) {
                   currentWord={currentWord}
                   writenWord={inputedWord}
                 />
-                <Box
+                <Grid
+                  container
+                  spacing={2}
                   sx={{
-                    width: "150px",
-                    margin: "auto",
-                    marginTop: "20px",
-                    display: "none",
-                    "@media (max-width: 768px)": {
-                      display: "block",
-                    },
+                    justifyContent: "center",
+                    margin: "10px 0",
                   }}
                 >
-                  <CustomBtn
-                    onClick={() => checkWord()}
-                    content={"Submit"}
-                    variant={"clear"}
-                  />
-                </Box>
+                  {words.length > 0 && (
+                    <Grid
+                      item
+                      xs={12}
+                      sm={6}
+                      sx={{
+                        display: "none",
+                        "@media (max-width: 768px)": {
+                          display: "flex",
+                        },
+                      }}
+                    >
+                      <CustomBtn
+                        onClick={() => checkWord()}
+                        content={"Submit"}
+                        variant={"clear"}
+                      />
+                    </Grid>
+                  )}
+                  {words.length === 0 && (
+                    <Grid item xs={12} sm={6} md={3}>
+                      <CustomBtn
+                        content={"Restart"}
+                        variant={"clear"}
+                        onClick={() => restartGame()}
+                      />
+                    </Grid>
+                  )}
+                </Grid>
               </Box>
             </Box>
           </Box>
