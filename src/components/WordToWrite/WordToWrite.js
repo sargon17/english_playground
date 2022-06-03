@@ -143,6 +143,7 @@ export default function WordToWrite() {
         variant="primary"
         onClick={() => {
           createTag();
+          checkSaveWords();
           // saveWords();
           // checkSaveWords();
         }}
