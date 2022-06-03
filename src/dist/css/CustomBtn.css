@@ -22,6 +22,8 @@
   transition: all 3ms ease-in-out;
   color: #868686;
   background-color: #080808;
+  -webkit-transform: scaleX(0.98);
+          transform: scaleX(0.98);
 }
 
 .custom-btn-clear {
@@ -38,5 +40,22 @@
   transition: all 3ms ease-in-out;
   color: #868686;
   background-color: #080808;
+}
+
+.custom-btn-primary {
+  background-color: #23ce6b;
+  color: #323232;
+}
+
+.custom-btn-primary:hover {
+  color: #181818;
+  background-color: #20b960;
+}
+
+.custom-btn-primary:active {
+  -webkit-transition: all 3ms ease-in-out;
+  transition: all 3ms ease-in-out;
+  color: #141414;
+  background-color: #1ca556;
 }
 /*# sourceMappingURL=CustomBtn.css.map */

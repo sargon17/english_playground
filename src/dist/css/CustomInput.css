@@ -82,6 +82,16 @@
           animation: exitColorIncorrect 0.5s ease-in-out;
 }
 
+:disabled {
+  background-color: #141414;
+  color: #868686;
+  cursor: not-allowed;
+}
+
+:disabled :hover {
+  background-color: #141414;
+}
+
 @-webkit-keyframes exitColorCorrect {
   0% {
     background-color: #23ce6b;
