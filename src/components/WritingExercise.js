@@ -81,7 +81,6 @@ export default function WritingExercise({ close, mousePosition }) {
         setWords(wtw);
         theWord = setTheWord();
         setCurrentWord(theWord);
-        // selectTheWord();
       } catch (error) {
         console.log("error", error);
       }
@@ -90,18 +89,21 @@ export default function WritingExercise({ close, mousePosition }) {
 
   // console.log(words);
 
-  function selectTheWord() {
-    console.log("word =>", currentWord);
-    console.log("words before =>", words);
-    let newWords = removeItemFromArray(words, currentWord);
-    setWords(newWords);
-    console.log("words after =>", words);
-    let randomNumber = Math.floor(Math.random() * words.length);
-    setCurrentWord(() => words[randomNumber]);
+  function updateWordsList() {
+    setWords((prevWords) => {
+      return prevWords.filter((word) => word !== currentWord);
+    });
+    // console.log("words after =>", words);
   }
 
+  // on change of words list it will update the current word
+  useEffect(() => {
+    console.log("words =>", words);
+    setCurrentWord(setTheWord());
+  }, [words]);
+
   function removeItemFromArray(array, item) {
-    return array.filter((i) => i !== item);
+    return array.splice(array.indexOf(item), 1);
   }
 
   function setTheWord() {
@@ -145,7 +147,7 @@ export default function WritingExercise({ close, mousePosition }) {
     setResultArray([]);
     setCorrectAnswersNumber(0);
     setTotalRepeats(repeatNumber);
-    selectTheWord();
+    updateWordsList();
   }
 
   function addPoints(isCorrect) {
