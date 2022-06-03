@@ -396,18 +396,21 @@ export default function WritingExercise({ close, mousePosition }) {
                   spacing={2}
                   sx={{
                     justifyContent: "center",
-                    margin: "10px 0",
+                    margin: "10px 0px 10px -16px",
                   }}
                 >
                   {words.length > 0 && (
                     <Grid
                       item
-                      xs={12}
+                      xs={8}
                       sm={6}
+                      padding="0px"
                       sx={{
                         display: "none",
+                        padding: "0px",
                         "@media (max-width: 768px)": {
                           display: "flex",
+                          padding: "0px",
                         },
                       }}
                     >
@@ -419,7 +422,16 @@ export default function WritingExercise({ close, mousePosition }) {
                     </Grid>
                   )}
                   {words.length === 0 && (
-                    <Grid item xs={12} sm={6} md={3}>
+                    <Grid
+                      item
+                      xs={8}
+                      sm={6}
+                      md={3}
+                      padding="0px"
+                      sx={{
+                        padding: "0px",
+                      }}
+                    >
                       <CustomBtn
                         content={"Restart"}
                         variant={"primary"}
