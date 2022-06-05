@@ -14,6 +14,7 @@ import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 // Utils
 import checkScrollPosition from "../utlities/checkScrollPosition";
 import _normalizeWord from "../utlities/normalizeWord";
+import _cleanInputField from "../utlities/cleanInputFiled";
 
 // Components
 import Blops from "./Blops";
@@ -103,8 +104,7 @@ export default function WritingExercise({ close, mousePosition }) {
   function checkWord() {
     //normalize the word
     let word = _normalizeWord(inputtedWord.target.value);
-    // clean the input field
-    cleanInput(inputtedWord);
+    _cleanInputField(inputtedWord);
 
     //check if the word is assigned
     if (!currentWord) {
@@ -144,10 +144,6 @@ export default function WritingExercise({ close, mousePosition }) {
 
   function addPoints(isCorrect) {
     setResultArray([...resultArray, isCorrect ? check : xCircle]);
-  }
-
-  function cleanInput(element) {
-    element.target.value = "";
   }
 
   return (
