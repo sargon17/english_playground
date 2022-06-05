@@ -240,7 +240,7 @@ export default function WritingExercise({ close, mousePosition }) {
             >
               <ProgressCounter
                 progress={correctAnswersNumber}
-                maxprogress={totalRepeats}
+                maxProgress={totalRepeats}
               />
             </Box>
             {/* / Progress counter Container */}
@@ -341,7 +341,7 @@ export default function WritingExercise({ close, mousePosition }) {
                     minHeight: "24px",
                     "@media (max-width: 768px)": {
                       gap: "4px",
-                      mmargin: "1rem auto",
+                      margin: "1rem auto",
                       "& > img": {
                         width: "18px",
                         height: "18px",

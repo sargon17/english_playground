@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 
-export default function ProgressCounter({ progress, maxprogress }) {
+export default function ProgressCounter({ progress, maxProgress }) {
   return (
     <>
       <Typography
@@ -10,7 +10,7 @@ export default function ProgressCounter({ progress, maxprogress }) {
           color: "grey.normal_hover",
         }}
       >
-        {progress} / {maxprogress}
+        {progress} / {maxProgress}
       </Typography>
     </>
   );
