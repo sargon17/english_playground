@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../dist/css/CustomInput.css";
+import _normalizeWord from "../../utlities/normalizeWord";
 
 export default function CustomInput({
   handleWriting,
@@ -13,11 +14,12 @@ export default function CustomInput({
   // Function that displays the result of the user's input changing the color of the input
   function displayStatus(e) {
     // set the input class to display the result of the user's input
-    if (e.target.value.trim().toLowerCase() === currentWord) {
-      setInputClasses(["custom-input", "custom-input-correct"]);
-    } else {
-      setInputClasses(["custom-input", "custom-input-incorrect"]);
-    }
+    setInputClasses([
+      "custom-input",
+      _normalizeWord(e.target.value) === currentWord
+        ? "custom-input-correct"
+        : "custom-input-incorrect",
+    ]);
     // clean the classes of the input to display the default style
     setTimeout(() => {
       setInputClasses(["custom-input"]);
@@ -27,11 +29,7 @@ export default function CustomInput({
 
   // check for the custom placeholder
   useEffect(() => {
-    if (isDisabled) {
-      setInputPlaceholder(isDisabled);
-    } else {
-      setInputPlaceholder("Write here...");
-    }
+    setInputPlaceholder(isDisabled ? isDisabled : "Write here...");
   }, [isDisabled]);
 
   return (
@@ -43,7 +41,6 @@ export default function CustomInput({
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             displayStatus(e);
-
             checkWord();
           }
         }}
