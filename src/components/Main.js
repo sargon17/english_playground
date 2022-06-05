@@ -42,7 +42,7 @@ export default function Main() {
   // console.log("wtw", wtw);
 
   function downloadData() {
-    console.log("downloadData");
+    // console.log("downloadData");
 
     download();
 
@@ -52,11 +52,11 @@ export default function Main() {
         if (response !== undefined) {
           dispatch(setWordsToWriteRedux([...wordsToWrite]));
         }
-        console.log("response", response);
+        // console.log("response", response);
 
-        console.log("redux", wtw);
+        // console.log("redux", wtw);
       } catch (error) {
-        console.log("error", error);
+        // console.log("error", error);
       }
     }
   }
@@ -64,11 +64,7 @@ export default function Main() {
   function handleClick(game) {
     setGames(
       games.map((item) => {
-        if (item.id === game.id) {
-          item.isActive = !item.isActive;
-        } else {
-          item.isActive = false;
-        }
+        item.isActive = item.id === game.id ? true : false;
         return item;
       })
     );
