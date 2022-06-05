@@ -22,9 +22,10 @@ export default function CustomInput({
     setTimeout(() => {
       setInputClasses(["custom-input"]);
     }, 500); // ! IMPORTANT: the timeout is set to 500ms to avoid the input to be displayed with the wrong color
-    // ! if the duration of the animaton change, need to change the timeout too
+    // ! if the duration of the animation change, need to change the timeout too
   }
 
+  // check for the custom placeholder
   useEffect(() => {
     if (isDisabled) {
       setInputPlaceholder(isDisabled);
