@@ -7,6 +7,8 @@ import Notification from "../Notification/Notification";
 import WordTag from "../WordTag/WordTag";
 
 import compareArrays from "../../utlities/compareArrays";
+import _normalizeWord from "../../utlities/normalizeWord";
+import _cleanInputField from "../../utlities/cleanInputFiled";
 
 // redux store
 import { useSelector, useDispatch } from "react-redux";
@@ -18,14 +20,17 @@ import {
 export default function WordToWrite() {
   const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
     "wordsToWrite",
-    ["interview", "house", "car"]
+    []
   );
 
   const wtw = useSelector(selectWordsToWrite);
   const dispatch = useDispatch();
+
+  // state of the words list to render
   let [displayedWords, setDisplayedWords] = useState([]);
   let anotherList;
-  let [isNotification, setIsNotification] = useState(false);
+  // states of notifications
+  let [isNotificationActive, setIsNotificationActive] = useState(false);
   let [notification, setNotification] = useState({
     message: "",
     type: "",
@@ -85,23 +90,26 @@ export default function WordToWrite() {
       position: position,
       duration: duration,
     });
-    setIsNotification(true);
+    setIsNotificationActive(true);
 
     setTimeout(() => {
-      setIsNotification(false);
+      setIsNotificationActive(false);
     }, duration + 500);
   }
 
   function createTag() {
-    console.log("createTag", input.current.value);
-    if (
-      input.current.value !== "" &&
-      !anotherList.includes(input.current.value)
-    ) {
-      anotherList = [...anotherList, input.current.value.toLowerCase().trim()];
-      saveWords();
+    // console.log("createTag", input.current.value);
+    let word = input.current.value;
+    _cleanInputField(input);
+
+    // check if the word is empty or already exists in the list
+    if (word === "" || anotherList.includes(word)) {
+      return;
     }
-    input.current.value = "";
+
+    // upd the list
+    anotherList = [...anotherList, _normalizeWord(word)];
+    saveWords();
     renderWordsToWrite();
   }
 
@@ -149,7 +157,7 @@ export default function WordToWrite() {
         }}
       />
 
-      {isNotification && (
+      {isNotificationActive && (
         <Notification
           message={notification.message}
           type={notification.type}
