@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Box, display, margin } from "@mui/system";
+import { Box } from "@mui/system";
 import { capitalize, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import check from "./../assets/check-circle-fill.svg";
 import xCircle from "./../assets/x-circle-fill.svg";
-import wordsData from "./../data/writingEx_data.json";
 import { IconButton } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { Grid } from "@mui/material";
-
-import useLocalStorage from "@d2k/react-localstorage";
 
 // Icons
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 
 // Utils
 import checkScrollPosition from "../utlities/checkScrollPosition";
+import _normalizeWord from "../utlities/normalizeWord";
 
 // Components
 import Blops from "./Blops";
@@ -36,27 +34,24 @@ import {
 } from "../features/gameData/gameDataSlice";
 
 export default function WritingExercise({ close, mousePosition }) {
-  // const [wordsToWrite, setWordsToWrite, removeWordsToWrite] = useLocalStorage(
-  //   "wordsToWrite",
-  //   []
-  // );
+  const WTW = useSelector(selectWordsToWrite);
+  const TimesToRepeat = 12;
 
-  const wtw = useSelector(selectWordsToWrite);
-
-  // console.log(wordsToWrite);
+  // state of the correct answers
   let [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
-  let [resultArray, setResultArray] = useState([]);
-  const repeatNumber = 12;
-  let [totalRepeats, setTotalRepeats] = useState(repeatNumber);
-  // let words = wordsData;
-  // let words = wordsToWrite ? wordsToWrite : [];
-  let [words, setWords] = useState(wtw ? wtw : []);
-  let theWord = setTheWord();
-  let [currentWord, setCurrentWord] = useState(theWord);
+  // state of the times to repeat the game on error it will increase by 2
+  let [totalRepeats, setTotalRepeats] = useState(TimesToRepeat);
+  // state of the arrays of the words to write
+  let [words, setWords] = useState(WTW ? WTW : []);
+  // state of the current selected and displayed word
+  let [currentWord, setCurrentWord] = useState(setTheWord());
+  // state of the menu where the user can write the list of words
   let [isWtwOpen, setIsWtwOpen] = useState(false);
+  // state of the result icons displayed
+  let [resultArray, setResultArray] = useState([]);
 
-  // this element is an object to find the word => inputedWord.target.value
-  let [inputedWord, setInputedWord] = useState("");
+  // this element is an object to find the word => inputtedWord.target.value
+  let [inputtedWord, setInputtedWord] = useState("");
 
   // conditioned styles
   let addIconStyle = {};
@@ -76,13 +71,12 @@ export default function WritingExercise({ close, mousePosition }) {
     };
   }
 
-  // change the word to write dinamicly when the user close the words to write settings
+  // change the word to write dynamically when the user close the words to write settings
   useEffect(() => {
-    if (!wtw.includes(currentWord)) {
+    if (!WTW.includes(currentWord)) {
       try {
-        setWords(wtw);
-        theWord = setTheWord();
-        setCurrentWord(theWord);
+        setWords(WTW);
+        setCurrentWord(setTheWord());
       } catch (error) {
         console.log("error", error);
       }
@@ -107,63 +101,53 @@ export default function WritingExercise({ close, mousePosition }) {
   }
 
   function checkWord() {
+    //normalize the word
+    let word = _normalizeWord(inputtedWord.target.value);
+    // clean the input field
+    cleanInput(inputtedWord);
+
     //check if the word is assigned
     if (!currentWord) {
       return;
     }
-    if (inputedWord === "") {
+    //check if inputted word is different from the current word
+    if (word !== currentWord) {
       addPoints(false);
       setTotalRepeats(totalRepeats + 2);
       return;
     }
-    let word = inputedWord.target.value;
-    word = word.toLowerCase().trim();
-    if (word === currentWord) {
-      setCorrectAnswersNumber(correctAnswersNumber + 1);
-      addPoints(true);
-      checkCorrectsTimes();
-    } else {
-      addPoints(false);
-      setTotalRepeats(totalRepeats + 2);
-    }
-    cleanInput(inputedWord);
+
+    // if all checks are passed
+    setCorrectAnswersNumber(correctAnswersNumber + 1);
+    addPoints(true);
+    checkCorrectTimes();
   }
 
-  // function that set the inputedWirds value
-  function handleWriting(element) {
-    setInputedWord(element);
-  }
-
-  function checkCorrectsTimes() {
+  function checkCorrectTimes() {
     if (correctAnswersNumber + 1 >= totalRepeats) {
-      endGame();
+      endCurrentWordGame();
+      updateWordsList();
     }
   }
 
-  function endGame() {
+  // end the current word game
+  function endCurrentWordGame() {
     setResultArray([]);
     setCorrectAnswersNumber(0);
-    setTotalRepeats(repeatNumber);
-    updateWordsList();
+    setTotalRepeats(TimesToRepeat);
+  }
+
+  function restartGame() {
+    endCurrentWordGame();
+    setWords(WTW);
   }
 
   function addPoints(isCorrect) {
-    if (isCorrect) {
-      setResultArray([...resultArray, check]);
-    } else {
-      setResultArray([...resultArray, xCircle]);
-    }
+    setResultArray([...resultArray, isCorrect ? check : xCircle]);
   }
 
   function cleanInput(element) {
     element.target.value = "";
-  }
-
-  function restartGame() {
-    setResultArray([]);
-    setCorrectAnswersNumber(0);
-    setTotalRepeats(repeatNumber);
-    setWords(wtw);
   }
 
   return (
@@ -384,11 +368,12 @@ export default function WritingExercise({ close, mousePosition }) {
                 }}
               >
                 <CustomInput
-                  //onClick={{ handleWriting, checkWord }}
-                  handleWriting={handleWriting}
+                  handleWriting={(e) => {
+                    setInputtedWord(e);
+                  }}
                   checkWord={checkWord}
                   currentWord={currentWord}
-                  writenWord={inputedWord}
+                  writenWord={inputtedWord}
                   isDisabled={!words.length ? "add new words or restart" : ""}
                 />
                 <Grid
